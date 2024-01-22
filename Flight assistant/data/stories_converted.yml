@@ -1,0 +1,63 @@
+version: "3.1"
+stories:
+- story: greeting
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - checkpoint: init_flight_question_price
+  - intent : utter_init_flight_question_price
+
+- story: greeting
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - checkpoint: init_flight_question_time
+  - intent : utter_init_flight_question_time
+
+- story: flight interjection
+  steps:
+  - intent: item_start_generic
+  - action: flight_order_form
+  - active_loop: flight_order_form
+  - slot_was_set: 
+    - requested_slot: arrival
+  - action: flight_order_form
+
+- story: flight interjection
+  steps:
+  - intent: item_start_generic
+  - action: flight_order_form
+  - active_loop: flight_order_form
+  - slot_was_set: 
+    - requested_slot: departure
+  - action: flight_order_form
+
+- story: flight interjection
+  steps:
+  - intent: item_start_generic
+  - action: flight_order_form
+  - active_loop: flight_order_form
+  - slot_was_set: 
+    - requested_slot: date
+  - action: flight_order_form
+
+- story: flight interjection
+  steps:
+  - intent: item_start_generic
+  - action: flight_order_form
+  - active_loop: flight_order_form
+  - slot_was_set: 
+    - requested_slot: class
+  - action: flight_order_form
+
+- story: flight interjection
+  steps:
+  - intent: item_start_generic
+  - action: flight_order_form
+  - active_loop: flight_order_form
+  - slot_was_set: 
+    - requested_slot: luggage
+  - action: flight_order_form
+
+
+

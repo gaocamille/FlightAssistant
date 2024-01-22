@@ -1,0 +1,25 @@
+{
+  "lookup": {
+    "rules": {},
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"flight_order_form\"}, \"slots\": {\"requested_slot\": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"user\": {\"intent\": \"item_start_generic\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"flight_order_form\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"utter_flight_order_form_arrival\"}, \"slots\": {\"requested_slot\": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"user\": {\"intent\": \"item_start_generic\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"utter_flight_order_form_departure\"}, \"slots\": {\"requested_slot\": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"user\": {\"entities\": [\"arrival\"], \"intent\": \"item_arrival\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"utter_flight_order_form_date\"}, \"slots\": {\"requested_slot\": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"user\": {\"entities\": [\"departure\"], \"intent\": \"item_departure\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"utter_flight_order_form_class\"}, \"slots\": {\"requested_slot\": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"user\": {\"entities\": [\"date\"], \"intent\": \"item_date\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"utter_flight_order_form_luggage\"}, \"slots\": {\"requested_slot\": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"user\": {\"entities\": [\"class\"], \"intent\": \"item_class\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"flight_order_form\"}, \"slots\": {\"requested_slot\": [0.0, 1.0, 0.0, 0.0, 0.0, 0.0]}, \"user\": {\"intent\": \"item_start_generic\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"flight_order_form\"}, \"slots\": {\"requested_slot\": [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]}, \"user\": {\"intent\": \"item_start_generic\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"flight_order_form\"}, \"slots\": {\"requested_slot\": [0.0, 0.0, 0.0, 0.0, 1.0, 0.0]}, \"user\": {\"intent\": \"item_start_generic\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"flight_order_form\"}, \"prev_action\": {\"action_name\": \"flight_order_form\"}, \"slots\": {\"requested_slot\": [0.0, 0.0, 0.0, 1.0, 0.0, 0.0]}, \"user\": {\"intent\": \"item_start_generic\"}}]": "do_not_predict_loop_action"
+    },
+    "rules_not_in_stories": [
+      "predicting default action with intent back",
+      "predicting default action with intent session_start",
+      "predicting default action with intent restart",
+      "handling active loops and forms - flight_order_form"
+    ]
+  }
+}

@@ -2,29 +2,82 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: item_start_generic
+  - action: flight_order_form
+  - active_loop: flight_order_form
+  - slot_was_set:
+    - requested_slot: departure
+  - action: utter_flight_order_form_arrival
+  - intent: item_arrival
+    entities:
+    - arrival: Paris
+  - slot_was_set:
+    - arrival: Paris
+  - action: utter_flight_order_form_departure
+  - intent: item_departure
+    entities:
+    - departure: Verona
+  - slot_was_set:
+    - departure: Verona
+  - action: utter_flight_order_form_date
+  - intent: item_date
+    entities:
+    - date: March 15th 2024
+  - slot_was_set:
+    - date: March 15th 2024
+  - action: utter_flight_order_form_class
+  - intent: item_class
+    entities:
+    - class: Economy
+  - slot_was_set:
+    - class: Economy
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: Yes
+  - slot_was_set:
+    - luggage: Yes
 
-- story: sad path 1
+- story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: item_start_generic
+  - action: flight_order_form
+  - active_loop: flight_order_form
+  - slot_was_set:
+    - requested_slot: departure
+  - action: utter_flight_order_form_arrival
+  - intent: item_arrival
+    entities:
+    - arrival: Paris
+  - slot_was_set:
+    - arrival: Paris
+  - action: utter_flight_order_form_departure
+  - intent: item_departure
+    entities:
+    - departure: Verona
+  - slot_was_set:
+    - departure: Verona
+  - action: utter_flight_order_form_date
+  - intent: item_date
+    entities:
+    - date: March 15th 2024
+  - slot_was_set:
+    - date: March 15th 2024
+  - action: utter_flight_order_form_class
+  - intent: item_class
+    entities:
+    - class: Economy
+  - slot_was_set:
+    - class: Economy
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: Yes
+  - slot_was_set:
+    - luggage: Yes

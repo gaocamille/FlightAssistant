@@ -1,34 +1,121 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
+- goodbye
+- greet
+- init_flight_quesiton_time
+- init_flight_question_price
+- item_arrival
+- item_class
+- item_date
+- item_departure
+- item_luggage
+- item_start_generic
+entities:
+- class
+- arrival
+- date
+- departure
+- luggage
+- payment
+- email
+- name
+- surname
+slots:
+  departure:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: departure
+  arrival:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: arrival
+  date:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: date
+  class:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: class
+  luggage:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: luggage
+  payment:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: payment
+  email:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: email
+  name:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: name
+  surname:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: surname
+  requested_slot:
+    type: categorical
+    values:
+    - departure
+    - arrival
+    - date
+    - class
+    - luggage
+    mappings:
+    - type: custom
+    influence_conversation: true
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
+  - text: Hey! Welcome to Flight Assistant, how can I help you?
+  utter_init_flight_price:
+  - text: A flight from Verona to Paris is 65€.
+  utter_init_flight_quesiton_time:
+  - text: A flight from Verona to Paris is 1:50 hours long.
+  utter_flight_order_form_departure:
+  - text: From where do you leave?
+  utter_flight_order_form_arrival:
+  - text: Where do you want to go?
+  utter_flight_order_form_date:
+  - text: When do you want to leave?
+  utter_flight_order_form_class:
+  - text: Do you want to fly in Economy, business or First class?
+  utter_flight_order_form_luggage:
+  - text: Do you want to add luggage?
+  utter_flight_order_form_return_ticket:
+  - text: Do you want to add a return ticket?
   utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: Bye
+actions:
+- utter_flight_order_form_arrival
+- utter_greet
+- utter_flight_order_form_departure
+- utter_flight_order_form_class
+- utter_flight_order_form_date
+- utter_flight_order_form_luggage
+- utter_init_flight_price
+- utter_init_flight_quesiton_time
+- utter_goodbye
+forms:
+  flight_order_form:
+    required_slots:
+    - departure
+    - arrival
+    - date
+    - class
+    - luggage
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
