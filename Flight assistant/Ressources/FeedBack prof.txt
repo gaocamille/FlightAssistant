@@ -1,0 +1,16 @@
+Les 3 questions au début : 
+- changer car conflits "intents" --> en faire 1 avec 3 quesitons + simple?
+--> on fait 2 propositions : 1 avec toutes les infos 1 sans
+
+3 mains tasks : 
+- achat d'un ticket (au début)
+- payment (mix initiative : ajouter les questions que le user pourrait demander example : où se trouve le numéo de mon passeport)
+- changes
+
+site ATIS: examples de phrases
+
+data set sur les flights : lien du prof sur teams
+
+KB : no need the personal informations 
+
+--> demander à Riccardi
