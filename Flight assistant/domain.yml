@@ -10,6 +10,10 @@ intents:
 - item_departure
 - item_luggage
 - item_start_generic
+- item_change
+- payment_card
+- payment_check_in
+
 entities:
 - class
 - arrival
@@ -20,6 +24,10 @@ entities:
 - email
 - name
 - surname
+- schedule
+- cost
+
+
 slots:
   departure:
     type: any
@@ -56,6 +64,16 @@ slots:
     mappings:
     - type: from_entity
       entity: email
+  schedule:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: schedule
+  cost:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: cost
   name:
     type: any
     mappings:
@@ -93,9 +111,41 @@ responses:
   utter_flight_order_form_class:
   - text: Do you want to fly in Economy, business or First class?
   utter_flight_order_form_luggage:
-  - text: Do you want to add luggage?
+  - text: How many luggage do you want to add
   utter_flight_order_form_return_ticket:
   - text: Do you want to add a return ticket?
+  utter_order_confirm_negative:
+  - text: What do you wish to change ?
+  utter_name_info_form:
+  - text: To what name is this reservation ?
+  utter_flight_search_form:
+  - text: Great, I found a flight from [Verona](departure) to [Paris](arrival) on the [March 15th 2024](date) at [8:05 AM](schedule) for [165€](cost). Is this okay for you ?
+  utter_ask_confirmation:
+  - text: Can you please confirm the following informations; Flight from [Verona](departure) to [Paris](arrival) on the [March 15th 2024](date) at [8:05 AM](schedule) for [165€](cost) in [Economy](class) with [1](luggage) additional luggage(s) in the name of [Mary](name) [Jones](surname).
+  utter_payment:
+  - text: Great, how would you like to pay ?
+  utter_payment_form:
+  - text: Okay, can you please privode me with your card number ?
+  utter_payment_success:
+  - text: Your payment has been processed successfully. You will receive your e-ticket and detailed itinerary by mail. To what email adress should I send this e-ticket ?
+  utter_confirmation:
+  - text: Noted ! I will now send you your e-ticket and detailed itinerary by mail. To what email adress should I send this e-ticket ?
+  utter_confirmation_mail:
+  - text: I just sent you the information and the e-ticket, it is possible that the email takes a few minutes to arrive. Do you need anything else ?
+  utter_extra_need:
+  - text: Do you need anything else ?
+  utter_extra_need_form:
+  - text: Sure, tell me, what can I help you with ?
+  utter_assistance_form:
+  - text: Can you please tell me what is your need ; Reduced mobility / Hearing impaired / Visually impaired
+  utter_assistance_confirmation:
+  - text: Okay, we will do the necessary for your arrival at the airport
+  utter_regime_form:
+  - text: Can you please indicate your special regime; vegetarian/vegan, halal/kasher , gluten free , dairy free
+  utter_regime_confirmation:
+  - text: Okay, your information have been registered with success.
+  utter_can_not_help:
+  - text: Sorry, I cannot help you with that.
   utter_goodbye:
   - text: Bye
 actions:
@@ -107,6 +157,22 @@ actions:
 - utter_flight_order_form_luggage
 - utter_init_flight_price
 - utter_init_flight_quesiton_time
+- utter_order_confirm_negative
+- utter_name_info_form
+- utter_flight_search_form
+- utter_ask_confirmation
+- utter_payment
+- utter_payment_form
+- utter_payment_success
+- utter_confirmation
+- utter_confirmation_mail
+- utter_extra_need
+- utter_extra_need_form
+- utter_assistance_form
+- utter_assistance_confirmation
+- utter_regime_form
+- utter_regime_confirmation
+- utter_can_not_help
 - utter_goodbye
 forms:
   flight_order_form:
