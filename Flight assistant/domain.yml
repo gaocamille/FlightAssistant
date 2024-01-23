@@ -28,9 +28,13 @@ intents:
 entities:
 - date
 - departure
+<<<<<<< Updated upstream
 - luggage
 - payment_check_in
 - payment_card
+=======
+- class
+>>>>>>> Stashed changes
 - email
 - luggage
 - surname
@@ -40,9 +44,13 @@ entities:
 - payment
 - schedule
 - cost
+<<<<<<< Updated upstream
 - passport
 
 
+=======
+- passport_number
+>>>>>>> Stashed changes
 slots:
   departure:
     type: any
