@@ -142,33 +142,33 @@ nlu:
     - book a flight from milan to ny
     - how far is the square
     - give me the directions to time square
-  - intent: assistance
-    examples: |
-      - I need some additional assistance
-      - I need help
-      - I need an assistance
-      - I will need help 
-  - intent: special_need
-    examples: |
-      - Since I have a wheelchair, I have reduced mobility. Could I receive help getting on board?
-      - I have a wheelchair
-      - I have reduced mobility
-  - intent: regime
-    examples: |
-      - Particular regime
-      - regime  
-      - I have a particular regime
-  - intent: regime_form
-    examples: |
-      - I am vegetarian
-      - I am gluten free
-      - I don't eat meat
-      - I am allergic to peanuts
-      - I eat halal
-      - I eat kasher
-      - Halal
-      - Kasher
-      - I am vegan
-      - I'm vegan
-      - Vegan
-      - Vegetarien
+- intent: assistance
+  examples: |
+    - I need some additional assistance
+    - I need help
+    - I need an assistance
+    - I will need help 
+- intent: special_need
+  examples: |
+    - Since I have a wheelchair, I have reduced mobility. Could I receive help getting on board?
+    - I have a wheelchair
+    - I have reduced mobility
+- intent: regime
+  examples: |
+    - Particular regime
+    - regime  
+    - I have a particular regime
+- intent: regime_form
+  examples: |
+    - I am vegetarian
+    - I am gluten free
+    - I don't eat meat
+    - I am allergic to peanuts
+    - I eat halal
+    - I eat kasher
+    - Halal
+    - Kasher
+    - I am vegan
+    - I'm vegan
+    - Vegan
+    - Vegetarien
