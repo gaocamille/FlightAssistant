@@ -13,6 +13,9 @@ intents:
 - item_change
 - payment_card
 - payment_check_in
+- affirm
+- deny
+
 
 entities:
 - class
@@ -26,6 +29,7 @@ entities:
 - surname
 - schedule
 - cost
+- passport_number
 
 
 slots:
@@ -64,6 +68,11 @@ slots:
     mappings:
     - type: from_entity
       entity: email
+  passport_number:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: passport_number
   schedule:
     type: any
     mappings:
@@ -146,6 +155,10 @@ responses:
   - text: Okay, your information have been registered with success.
   utter_can_not_help:
   - text: Sorry, I cannot help you with that.
+  utter_passport_info_form:
+  - text: What is your passport number ?
+  utter_passport_location:
+  - text: Your passport number is the number present on top of the identity page of your passport.
   utter_goodbye:
   - text: Bye
 actions:
@@ -174,6 +187,8 @@ actions:
 - utter_regime_confirmation
 - utter_can_not_help
 - utter_goodbye
+- utter_passport_info_form
+- utter_passport_location
 forms:
   flight_order_form:
     required_slots:
