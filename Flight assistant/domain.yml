@@ -34,13 +34,14 @@ entities:
 - date
 - departure
 - luggage
-- payment
+- payment_check_in
+- payment_card
 - email
 - name
 - surname
 - schedule
 - cost
-- passport_number
+- passport
 
 
 slots:
@@ -159,21 +160,21 @@ responses:
   utter_assistance_form:
   - text: Can you please tell me what is your need ; Reduced mobility / Hearing impaired / Visually impaired
   utter_assistance_confirmation:
-  - text: Okay, we will do the necessary for your arrival at the airport
+  - text: Okay, we will do the necessary for your arrival at the airport. Do you need anything else ?
   utter_regime_form:
   - text: Can you please indicate your special regime; vegetarian/vegan, halal/kasher , gluten free , dairy free
   utter_regime_confirmation:
-  - text: Okay, your information have been registered with success.
+  - text: Okay, your information have been registered with success. Do you have any other request ?
   utter_can_not_help:
-  - text: Sorry, I cannot help you with that.
+  - text: Sorry, I cannot help you with that. Do you have any other request ?
   utter_passport_info_form:
   - text: What is your passport number ?
   utter_passport_location:
   - text: Your passport number is the number present on top of the identity page of your passport.
   utter_item_change_departure_class:
-  - text: Okay ! So you want to xhange the departure date to {date} and to {class} class.
+  - text: Okay ! So you want to change the departure date to {date} and to {class} class.
   utter_goodbye:
-  - text: Bye
+  - text: Okay perfect, I wish you an excellent flight. Goodbye :)
 actions:
 - utter_flight_order_form_arrival
 - utter_greet
