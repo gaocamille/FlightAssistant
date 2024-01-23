@@ -35,12 +35,13 @@ nlu:
   examples: |
     - [Verona](departure)
     - from [Verona](departure)
-    - [Verona](departure)
     - I'll leave from [Verona](departure)
+    - [Verona](departure)
 - intent: item_date
   examples: |
     - [March 15th 2024](date)
     - I will leave on [March 15th 2024](date)
+    - [March 15th 2024](date)
 - intent: item_class
   examples: |
     - [Economy](class)
@@ -55,6 +56,7 @@ nlu:
     - I want to travel in [economy](class)
     - I want to travel in [business](class)
     - I want to travel in [first](class)
+    - [Economy](class)
 - intent: item_luggage
   examples: |
     - Yes I want to add [one](luggage) luggage
@@ -68,6 +70,7 @@ nlu:
     - [Two](luggages)
     - [zero](luggage)
     - [Zero](luggage)
+    - [one](luggage)
 - intent: affirm
   examples: |
     - yes
@@ -114,23 +117,26 @@ nlu:
   examples: |
     - My email is [mary.jones@unitn.it](email)
     - [mary.jones@unitn.it](email)
+    - [maryjones@unitn.it](email)
 - intent: item_firstname
   examples: |
     - my name is [Mary](name)
     - My name is [Mary](name)
-    - [Mary](name) 
-    - [MARY](name) 
-    - [mary](name) 
+    - [Mary](name)
+    - [MARY](name)
+    - [mary](name)
 - intent: item_surname
   examples: |
     - my surname is [Jones](surname)
     - My name is [Jones](surname)
-    - [Jones](surname) 
-    - [JONES](surname) 
-    - [jones](surname) 
+    - [Jones](surname)
+    - [JONES](surname)
+    - [jones](surname)
+    - [Mary](name) [Jones](surname)
 - intent: item_passport
   examples: |
     - My passport number is [ABC123](passport)
+    - [ABC123](passport)
     - [ABC123](passport)
 - intent: item_question_passport
   examples: |
@@ -153,7 +159,7 @@ nlu:
     - I need some additional assistance
     - I need help
     - I need an assistance
-    - I will need help 
+    - I will need help
 - intent: special_need
   examples: |
     - Since I have a wheelchair, I have reduced mobility. Could I receive help getting on board?
@@ -162,7 +168,7 @@ nlu:
 - intent: regime
   examples: |
     - Particular regime
-    - regime  
+    - regime
     - I have a particular regime
 - intent: regime_form
   examples: |
@@ -177,4 +183,4 @@ nlu:
     - I am vegan
     - I'm vegan
     - Vegan
-    - Vegetarien
+    - Vegetarian
