@@ -128,9 +128,9 @@ responses:
   utter_name_info_form:
   - text: To what name is this reservation ?
   utter_flight_search_form:
-  - text: Great, I found a flight from [Verona](departure) to [Paris](arrival) on the [March 15th 2024](date) at [8:05 AM](schedule) for [165€](cost). Is this okay for you ?
+  - text: Great, I found a flight from {departure} to {arrival} on the {date} at {schedule} for {cost}. Is this okay for you ?
   utter_ask_confirmation:
-  - text: Can you please confirm the following informations; Flight from [Verona](departure) to [Paris](arrival) on the [March 15th 2024](date) at [8:05 AM](schedule) for [165€](cost) in [Economy](class) with [1](luggage) additional luggage(s) in the name of [Mary](name) [Jones](surname).
+  - text: Can you please confirm the following informations; Flight from {departure} to {arrival} on the {date} at {schedule} for {cost} in {class} with {luggage} additional luggage(s) in the name of {name} {surname}.
   utter_payment:
   - text: Great, how would you like to pay ?
   utter_payment_form:
@@ -159,6 +159,8 @@ responses:
   - text: What is your passport number ?
   utter_passport_location:
   - text: Your passport number is the number present on top of the identity page of your passport.
+  utter_item_change_departure_class:
+  - text: Okay ! So you want to xhange the departure date to {date} and to {class} class.
   utter_goodbye:
   - text: Bye
 actions:
