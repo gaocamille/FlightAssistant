@@ -1,0 +1,174 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - Hi
+    - Hello
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - Goodbye
+    - Bye
+- intent: init_flight_question_price
+  examples: |
+    - How much is a flight from Verona to Paris?
+- intent: init_flight_question_time
+  examples: |
+    - How long is a flight from Verona to Paris?
+- intent: item_start_generic
+  examples: |
+    - I want to book a flight
+    - Book
+    - book
+    - I want to book
+    - I want to make a booking
+- intent: item_arrival
+  examples: |
+    - I want to go to [Paris](arrival)
+    - [Paris](arrival)
+    - [Paris](arrival)
+- intent: item_departure
+  examples: |
+    - [Verona](departure)
+    - from [Verona](departure)
+    - [Verona](departure)
+    - I'll leave from [Verona](departure)
+- intent: item_date
+  examples: |
+    - [March 15th 2024](date)
+    - I will leave on [March 15th 2024](date)
+- intent: item_class
+  examples: |
+    - [Economy](class)
+    - [Business](class)
+    - [First](class)
+    - [economy](class)
+    - [business](class)
+    - [first](class)
+    - I want to travel in [Economy](class)
+    - I want to travel in [Business](class)
+    - I want to travel in [First](class)
+    - I want to travel in [economy](class)
+    - I want to travel in [business](class)
+    - I want to travel in [first](class)
+- intent: item_luggage
+  examples: |
+    - Yes I want to add [one](luggage) luggage
+    - Yes I want to add [one](luggage) luggage please
+    - I want to add [one](luggage) luggage please
+    - [Yes](luggage)
+    - [one](luggage)
+    - [two](luggage)
+    - I will have [one](luggage) luggage
+    - [One](luggage)
+    - [Two](luggages)
+    - [zero](luggage)
+    - [Zero](luggage)
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - Yes
+- intent: deny
+  examples: |
+    - no
+    - n
+    - No
+- intent: item_change
+  examples: |
+    - I changed my mind. I want to change the departure date to [March 16th 2024](date) instead
+    - I'd like to change the departure date to [March 16th 2024](date) instead
+    - Actually I want to change to [First](class) class instead
+    - I want to change the departure date to [March 15th 2024](date) and to [First](class) class instead
+    - I want to change the destination to [Vienna](destination)
+    - Actually , can I get [one](luggage) luggage?
+    - actually , i 'd like [two](luggage) luggages
+    - I changed my mind, I want to change the departure date to [March 15th 2024](date) and to [First](class) class instead
+- intent: item_payment_card
+  examples: |
+    - Card
+    - card
+    - I would like to pay by card
+    - I want to pay by card
+- intent: item_payment_check_in
+  examples: |
+    - check in
+    - Check in
+    - I want to pay at the chech in desk
+    - I would like to pay at the check in desk
+- intent: item_email
+  examples: |
+    - My email is [mary.jones@unitn.it](email)
+    - [mary.jones@unitn.it](email)
+- intent: item_firstname
+  examples: |
+    - my name is [Mary](name)
+    - My name is [Mary](name)
+    - [Mary](name) 
+    - [MARY](name) 
+    - [mary](name) 
+- intent: item_surname
+  examples: |
+    - my surname is [Jones](surname)
+    - My name is [Jones](surname)
+    - [Jones](surname) 
+    - [JONES](surname) 
+    - [jones](surname) 
+- intent: item_passport
+  examples: |
+    - My passport number is [ABC123](passport)
+    - [ABC123](passport)
+- intent: item_question_passport
+  examples: |
+    - Where can I find my passport number?
+    - Where can I find the passport number?
+- intent: else
+  examples: |
+    - When is the chinese new year?
+    - What is 2 + 2?
+    - Who's the US President?
+    - do you have shoes
+    - what is your name
+    - are you real
+    - do you have a sister
+    - book a flight from milan to ny
+    - how far is the square
+    - give me the directions to time square
+- intent: assistance
+  examples: |
+    - I need some additional assistance
+    - I need help
+    - I need an assistance
+    - I will need help 
+- intent: special_need
+  examples: |
+    - Since I have a wheelchair, I have reduced mobility. Could I receive help getting on board?
+    - I have a wheelchair
+    - I have reduced mobility
+- intent: regime
+  examples: |
+    - Particular regime
+    - regime  
+    - I have a particular regime
+- intent: regime_form
+  examples: |
+    - I am vegetarian
+    - I am gluten free
+    - I don't eat meat
+    - I am allergic to peanuts
+    - I eat halal
+    - I eat kasher
+    - Halal
+    - Kasher
+    - I am vegan
+    - I'm vegan
+    - Vegan
+    - Vegetarien
