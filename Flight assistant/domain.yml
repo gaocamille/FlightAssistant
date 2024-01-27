@@ -30,7 +30,7 @@ entities:
 - surname
 - email
 - class
-- passport
+- passport_number
 - arrival
 - date
 - departure
