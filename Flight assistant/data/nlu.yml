@@ -22,26 +22,34 @@ nlu:
 - intent: item_start_generic
   examples: |
     - I want to book a flight
+    - i want to book a flight
     - Book
+    - Book a flight
     - book
     - I want to book
     - I want to make a booking
+    - book a flight
 - intent: item_arrival
   examples: |
     - I want to go to [Paris](arrival)
     - [Paris](arrival)
-    - [Paris](arrival)
+    - to [Paris](arrival)
+    - To [Paris](arrival)
+    - go to [Paris](arrival)
+    - Go to [Paris](arrival)
 - intent: item_departure
   examples: |
     - [Verona](departure)
     - from [Verona](departure)
+    - From [Verona](departure)
     - I'll leave from [Verona](departure)
-    - [Verona](departure)
+    - leave from [Verona](departure)
 - intent: item_date
   examples: |
     - [March 15th 2024](date)
     - I will leave on [March 15th 2024](date)
-    - [March 15th 2024](date)
+    - On [March 15th 2024](date)
+    - on [March 15th 2024](date)
 - intent: item_class
   examples: |
     - [Economy](class)
@@ -63,14 +71,22 @@ nlu:
     - Yes I want to add [one](luggage) luggage please
     - I want to add [one](luggage) luggage please
     - [Yes](luggage)
+    - [zero](luggage)
     - [one](luggage)
     - [two](luggage)
+    - I will have [zero](luggage) luggage
     - I will have [one](luggage) luggage
+    - I will have [two](luggage) luggages
     - [One](luggage)
     - [Two](luggages)
-    - [zero](luggage)
     - [Zero](luggage)
-    - [one](luggage)
+    - [0](luggage)
+    - [1](luggage)
+    - [2](luggage)
+    - [0](luggage)luggage
+    - [1](luggage)luggage
+    - [2](luggage)luggages
+    
 - intent: affirm
   examples: |
     - yes
@@ -80,11 +96,14 @@ nlu:
     - that sounds good
     - correct
     - Yes
+    - great
+    - Great
 - intent: deny
   examples: |
     - no
     - n
     - No
+    - nop
 - intent: item_change
   examples: |
     - I changed my mind. I want to change the departure date to [March 16th 2024](date) instead
@@ -92,17 +111,33 @@ nlu:
     - Actually I want to change to [First](class) class instead
     - I want to change the departure date to [March 16th 2024](date) and to [First](class) class instead
     - I want to change the destination to [Vienna](destination)
-    - Actually , can I get [one](luggage) luggage?
-    - actually , i 'd like [two](luggage) luggages
+    - Actually, can I get [one](luggage) luggage?
+    - actually, i'd like [two](luggage) luggages
     - I changed my mind, I want to change the departure date to [March 16th 2024](date) and to [First](class) class instead
-    - actually, i 'd like [two](luggage) luggages
+    - actually, i'd like [two](luggage) luggages
     - Actually I want to change to [First](class) class instead
+- intent: item_changed_unpricised
+  examples: |
+    - I changed my mind
+    - I want to change something
+    - I want to change
+    - change
+    - Actually I want to change
+    - actually I want to change
+    - can I change something
+    - Can I change
+    - can I change
+    - Can I change something
 - intent: item_payment_card
   examples: |
     - Card
     - card
     - I would like to pay by card
     - I want to pay by card
+    - by card
+    - By card
+    - pay by card
+    - Pay by card
 - intent: item_number_card
   examples: |
     - 0000 1111 2222 3333
@@ -113,14 +148,22 @@ nlu:
   examples: |
     - check in
     - Check in
+    - check in desk
+    - Check in desk
     - I want to pay at the chech in desk
     - I would like to pay at the check in desk
+    - at the check in
+    - At the check in
+    - at the check in desk
+    - At the check in desk
+    - pay at the chech in desk
+    - Pay at the chech in desk
 - intent: item_email
   examples: |
     - My email is [mary.jones@unitn.it](email)
     - [mary.jones@unitn.it](email)
     - [maryjones@unitn.it](email)
-    - [maryjones@unitn.it](email)
+    - at [maryjones@unitn.it](email)
 - intent: item_firstname
   examples: |
     - my name is [Mary](name)
@@ -146,6 +189,8 @@ nlu:
   examples: |
     - Where can I find my passport number?
     - Where can I find the passport number?
+    - What is the passport number ?
+    - what's the passport number ?
 - intent: else
   examples: |
     - When is the chinese new year?
@@ -161,6 +206,7 @@ nlu:
 - intent: assistance
   examples: |
     - I need some additional assistance
+    - I need additional assistance
     - I need help
     - I need an assistance
     - I will need help
@@ -169,17 +215,21 @@ nlu:
     - Since I have a wheelchair, I have reduced mobility. Could I receive help getting on board?
     - I have a wheelchair
     - I have reduced mobility
+    - reduced mobility
+    - Reduced mobility
 - intent: regime
   examples: |
     - Particular regime
     - regime
     - I have a particular regime
+    - particular regime
 - intent: regime_form
   examples: |
     - I am vegetarian
     - I am gluten free
     - I don't eat meat
     - I am allergic to peanuts
+    - allergic to peanuts
     - I eat halal
     - I eat kasher
     - Halal
