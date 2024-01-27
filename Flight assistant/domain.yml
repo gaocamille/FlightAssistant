@@ -10,6 +10,11 @@ intents:
 - init_flight_question_price
 - item_arrival
 - item_change
+- item_change_luggage
+- item_change_date
+- item_change_departure
+- item_change_class
+- item_changed_unpricised
 - item_class
 - item_date
 - item_departure
@@ -118,11 +123,21 @@ responses:
   utter_flight_order_form_class:
   - text: Do you want to fly in Economy, business or First class?
   utter_flight_order_form_luggage:
-  - text: How many luggage do you want to add
+  - text: How many luggage do you want to add ?
   utter_flight_order_form_return_ticket:
   - text: Do you want to add a return ticket?
   utter_order_confirm_negative:
   - text: What do you wish to change ?
+  utter_order_change_luggage:
+  - text: How many luggages do you want to add ?
+  utter_order_change_departure:
+  - text: Where do you want to travel from ?
+  utter_order_change_class:
+  - text: What class do you wish to travel in ?
+  utter_order_change_date:
+  - text: When would you like to travel ?
+  utter_change_something_else:
+  - text: Okay, do you wish to change anything else ?
   utter_name_info_form:
   - text: To what name is this reservation ?
   utter_flight_search_form:
@@ -189,6 +204,12 @@ actions:
 - utter_regime_form
 - utter_regime_confirmation
 - utter_passport_location
+- utter_order_change_luggage
+- utter_order_change_departure
+- utter_order_change_class
+- utter_order_change_date
+- utter_change_something_else
+ 
 forms:
   flight_order_form:
     required_slots:
