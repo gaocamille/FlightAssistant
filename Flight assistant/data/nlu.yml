@@ -44,6 +44,11 @@ nlu:
     - From [Verona](departure)
     - I'll leave from [Verona](departure)
     - leave from [Verona](departure)
+    - [Roma](departure)
+    - from [Roma](departure)
+    - From [Roma](departure)
+    - I'll leave from [Roma](departure)
+    - leave from [Roma](departure)
 - intent: item_date
   examples: |
     - [March 15th 2024](date)
@@ -116,6 +121,40 @@ nlu:
     - I changed my mind, I want to change the departure date to [March 16th 2024](date) and to [First](class) class instead
     - actually, i'd like [two](luggage) luggages
     - Actually I want to change to [First](class) class instead
+- intent: item_change_departure
+  examples: |
+    - I want to change the departure
+    - I'd like to change the departure
+    - change departure
+    - departure
+    - Change the departure
+- intent: item_change_date
+  examples: |
+    - I want to change the departure date
+    - I'd like to change the departure date
+    - I want to change the date
+    - I'd like to change the date
+    - change departure date
+    - change date
+    - date
+    - departure date
+    - Change the date
+- intent: item_change_class
+  examples: |
+    - change the class
+    - change class
+    - class
+    - the class
+    - I'd like to change the class
+    - I want to change to the class
+- intent: item_change_lugagge
+  examples: |
+    - change number of luggage
+    - change the number of luggage
+    - change luggage
+    - luggage
+    - I want to change the number of luggage
+    - I'd like to change the number of luggage
 - intent: item_changed_unpricised
   examples: |
     - I changed my mind
@@ -182,9 +221,9 @@ nlu:
     - [Mary](name) [Jones](surname)
 - intent: item_passport
   examples: |
-    - My passport number is [ABC123](passport_number)
-    - [ABC123](passport_number)
-    - [ABC123](passport_number)
+    - My passport number is [ABC123](passport)
+    - [ABC123](passport)
+    - [ABC123](passport)
 - intent: item_question_passport
   examples: |
     - Where can I find my passport number?

@@ -261,3 +261,89 @@ stories:
   - action: utter_assistance_confirmation
   - intent: deny
   - action: utter_goodbye
+
+
+- story: interactive_story_4
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: item_start_generic
+  - action: utter_flight_order_form_arrival
+  - intent: item_arrival
+    entities:
+    - arrival: Paris
+  - slot_was_set:
+    - arrival: Paris
+  - action: utter_flight_order_form_departure
+  - intent: item_departure
+    entities:
+    - departure: Verona
+  - slot_was_set:
+    - departure: Verona
+  - action: utter_flight_order_form_date
+  - intent: item_date
+    entities:
+    - date: March 15th 2024
+  - slot_was_set:
+    - date: March 15th 2024
+  - action: utter_flight_order_form_class
+  - intent: item_class
+    entities:
+    - class: Economy
+  - slot_was_set:
+    - class: Economy
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: one
+  - slot_was_set:
+    - luggage: one
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
+    entities:
+    - departure: Roma
+  - slot_was_set:
+    - departure: Roma
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - action: utter_name_info_form
+  - intent: item_surname
+    entities:
+    - name: Mary
+    - surname: Jones
+  - slot_was_set:
+    - name: Mary
+  - slot_was_set:
+    - surname: Jones
+  - action: utter_passport_info_form
+  - intent: item_passport
+    entities:
+    - passport: ABC123
+  - action: utter_ask_confirmation
+  - intent: affirm
+  - action: utter_payment
+  - intent: item_payment_card
+  - action: utter_payment_form
+  - intent: item_number_card
+  - action: utter_payment_success
+  - intent: item_email
+    entities:
+    - email: maryjones@unitn.it
+  - slot_was_set:
+    - email: maryjones@unitn.it
+  - action: utter_confirmation_mail
+  - intent: affirm
+  - intent: item_email
+    entities:
+    - email: maryjones@unitn.it
+  - slot_was_set:
+    - email: maryjones@unitn.it
+  - action: utter_confirmation_mail
+  - intent: deny
+  - action: utter_goodbye
