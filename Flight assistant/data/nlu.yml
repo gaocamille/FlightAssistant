@@ -83,7 +83,7 @@ nlu:
     - I will have [one](luggage) luggage
     - I will have [two](luggage) luggages
     - [One](luggage)
-    - [Two](luggages)
+    - [Two](luggage)
     - [Zero](luggage)
     - [0](luggage)
     - [1](luggage)
