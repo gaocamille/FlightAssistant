@@ -182,9 +182,9 @@ nlu:
     - [Mary](name) [Jones](surname)
 - intent: item_passport
   examples: |
-    - My passport number is [ABC123](passport)
-    - [ABC123](passport)
-    - [ABC123](passport)
+    - My passport number is [ABC123](passport_number)
+    - [ABC123](passport_number)
+    - [ABC123](passport_number)
 - intent: item_question_passport
   examples: |
     - Where can I find my passport number?
