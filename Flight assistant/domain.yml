@@ -1,48 +1,45 @@
 version: '3.1'
 intents:
+- affirm
+- assistance
+- deny
+- else
 - goodbye
 - greet
 - init_flight_quesiton_time
 - init_flight_question_price
 - item_arrival
+- item_change
 - item_class
 - item_date
 - item_departure
-- item_luggage
-- item_start_generic
-- item_change
-- item_payment_card
-- item_payment_check_in
-- affirm
-- deny
 - item_email
 - item_firstname
-- item_surname
+- item_luggage
+- item_number_card
 - item_passport
+- item_payment_card
+- item_payment_check_in
 - item_question_passport
-- else
-- assistance
-- special_need
+- item_start_generic
+- item_surname
 - regime
 - regime_form
-
-
+- special_need
 entities:
+- surname
+- email
 - class
+- passport
 - arrival
 - date
 - departure
+- name
 - luggage
 - payment_check_in
 - payment_card
-- email
-- name
-- surname
 - schedule
 - cost
-- passport
-
-
 slots:
   departure:
     type: any
@@ -84,8 +81,6 @@ slots:
     mappings:
     - type: from_entity
       entity: passport_number
-  
- 
   name:
     type: any
     mappings:
@@ -131,9 +126,9 @@ responses:
   utter_name_info_form:
   - text: To what name is this reservation ?
   utter_flight_search_form:
-  - text: Great, I found a flight from {departure} to {arrival} on the {date} at {schedule} for {cost}. Is this okay for you ?
+  - text: Great, I found a flight from {departure} to {arrival} on the {date} at 8:05 AM for 165€. Is this okay for you ?
   utter_ask_confirmation:
-  - text: Can you please confirm the following informations; Flight from {departure} to {arrival} on the {date} at 8:05 AM for 165 € in {class} with {luggage} additional luggage(s) in the name of {name} {surname}.
+  - text: Can you please confirm the following informations; Flight from {departure} to {arrival} on the {date} at 8:05 AM for 165 € in {class} class with {luggage} additional luggage(s) in the name of {name} {surname}.
   utter_payment:
   - text: Great, how would you like to pay ?
   utter_payment_form:
@@ -167,32 +162,32 @@ responses:
   utter_goodbye:
   - text: Okay perfect, I wish you an excellent flight. Goodbye :)
 actions:
-- utter_flight_order_form_arrival
+- utter_goodbye
+- utter_confirmation_mail
+- utter_order_confirm_negative
 - utter_greet
-- utter_flight_order_form_departure
-- utter_flight_order_form_class
-- utter_flight_order_form_date
+- utter_flight_order_form_arrival
 - utter_flight_order_form_luggage
+- utter_assistance_confirmation
+- utter_payment_success
+- utter_name_info_form
+- utter_flight_order_form_date
+- utter_assistance_form
+- utter_ask_confirmation
+- utter_flight_order_form_class
+- utter_passport_info_form
+- utter_flight_search_form
+- utter_extra_need_form
+- utter_payment
+- utter_flight_order_form_departure
+- utter_payment_form
+- utter_can_not_help
+- utter_confirmation
 - utter_init_flight_price
 - utter_init_flight_quesiton_time
-- utter_order_confirm_negative
-- utter_name_info_form
-- utter_flight_search_form
-- utter_ask_confirmation
-- utter_payment
-- utter_payment_form
-- utter_payment_success
-- utter_confirmation
-- utter_confirmation_mail
 - utter_extra_need
-- utter_extra_need_form
-- utter_assistance_form
-- utter_assistance_confirmation
 - utter_regime_form
 - utter_regime_confirmation
-- utter_can_not_help
-- utter_goodbye
-- utter_passport_info_form
 - utter_passport_location
 forms:
   flight_order_form:
