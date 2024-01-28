@@ -2,246 +2,109 @@ version: "3.1"
 
 stories:
 
-
-- story: interactive_story_1
+- story: start_booking_process
   steps:
   - intent: greet
   - action: utter_greet
   - intent: item_start_generic
-  # - action: flight_order_form
-  # - active_loop: flight_order_form
-  # - slot_was_set:
-  #   - requested_slot: departure
   - action: utter_flight_order_form_arrival
+  - checkpoint: flight_details_entry
+
+- story: enter_flight_details
+  steps:
+  - checkpoint: flight_details_entry
   - intent: item_arrival
     entities:
-    - arrival: Paris
-  - slot_was_set:
     - arrival: Paris
   - action: utter_flight_order_form_departure
   - intent: item_departure
     entities:
     - departure: Verona
-  - slot_was_set:
-    - departure: Verona
   - action: utter_flight_order_form_date
   - intent: item_date
     entities:
-    - date: March 15th 2024
-  - slot_was_set:
     - date: March 15th 2024
   - action: utter_flight_order_form_class
   - intent: item_class
     entities:
     - class: Economy
-  - slot_was_set:
-    - class: Economy
   - action: utter_flight_order_form_luggage
   - intent: item_luggage
     entities:
     - luggage: one
-  - slot_was_set:
-    - luggage: one
+  - checkpoint: flight_details_confirmed
+
+
+- story: propose_and_confirm_flight
+  steps:
+  - checkpoint: flight_details_confirmed
   - action: utter_flight_search_form
   - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_luggage
+  - action: utter_order_change_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: two
+  # Répéter les étapes nécessaires (demander si besoin de qqchose autre)
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+
+- story: enter_personal_details_after_flight_confirmation
+  steps:
+  - checkpoint: flight_proposal_confirmed
   - action: utter_name_info_form
   - intent: item_surname
     entities:
     - name: Mary
-    - surname: Jones
-  - slot_was_set:
-    - name: Mary
-  - slot_was_set:
     - surname: Jones
   - action: utter_passport_info_form
   - intent: item_passport
     entities:
     - passport: ABC123
-  - action: utter_ask_confirmation
-  - intent: affirm
-  - action: utter_payment
-  - intent: item_payment_card
-  - action: utter_payment_form
-  - intent: item_number_card
-  - action: utter_payment_success
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: affirm
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: affirm
-  - action: utter_extra_need_form
-  - intent: regime_form
-  - action: utter_regime_confirmation
-  - intent: deny
-  - action: utter_goodbye
+  - checkpoint: personal_details_provided
 
-- story: interactive_story_2
+
+# - story: confirm_and_pay
+#   steps:
+#   - checkpoint: flight_details_confirmed
+#   - action: utter_ask_confirmation
+#   - intent: affirm
+#   - action: utter_payment
+#   - intent: item_payment_card
+#   - action: utter_payment_form
+#   - intent: item_number_card
+#   - action: utter_payment_success
+#   - checkpoint: payment_completed
+
+
+
+
+- story: payment_at_check_in
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: item_start_generic
-  # - action: flight_order_form
-  # - active_loop: flight_order_form
-  # - slot_was_set:
-  #   - requested_slot: departure
-  - action: utter_flight_order_form_arrival
-  - intent: item_arrival
-    entities:
-    - arrival: Paris
-  - slot_was_set:
-    - arrival: Paris
-  - action: utter_flight_order_form_departure
-  - intent: item_departure
-    entities:
-    - departure: Verona
-  - slot_was_set:
-    - departure: Verona
-  - action: utter_flight_order_form_date
-  - intent: item_date
-    entities:
-    - date: March 15th 2024
-  - slot_was_set:
-    - date: March 15th 2024
-  - action: utter_flight_order_form_class
-  - intent: item_class
-    entities:
-    - class: Economy
-  - slot_was_set:
-    - class: Economy
-  - action: utter_flight_order_form_luggage
-  - intent: item_luggage
-    entities:
-    - luggage: one
-  - slot_was_set:
-    - luggage: one
-  - action: utter_flight_search_form
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change
-    entities:
-    - luggage: two
-  - slot_was_set:
-    - luggage: two
-  - action: utter_flight_search_form
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change
-    entities:
-    - luggage: two
-  - slot_was_set:
-    - luggage: two
-  - action: utter_flight_search_form
-  - intent: affirm
-  - action: utter_name_info_form
-  - intent: item_surname
-    entities:
-    - name: Mary
-    - surname: Jones
-  - slot_was_set:
-    - name: Mary
-  - slot_was_set:
-    - surname: Jones
-  - action: utter_passport_info_form
-  - intent: item_passport
-    entities:
-    - passport: ABC123 
-  - action: utter_ask_confirmation
-  - intent: affirm 
+  - checkpoint: personal_details_provided
   - action: utter_payment
   - intent: item_payment_check_in
   - action: utter_confirmation
   - intent: item_email
     entities:
     - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
   - action: utter_confirmation_mail
-  - intent: else
-  - action: utter_can_not_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: affirm
+  - checkpoint: payment_completed
 
-- story: interactive_story_3
+- story: payment_by_card
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: item_start_generic
-  # - action: flight_order_form
-  # - active_loop: flight_order_form
-  # - slot_was_set:
-  #   - requested_slot: departure
-  - action: utter_flight_order_form_arrival
-  - intent: item_arrival
-    entities:
-    - arrival: Paris
-  - slot_was_set:
-    - arrival: Paris
-  - action: utter_flight_order_form_departure
-  - intent: item_departure
-    entities:
-    - departure: Verona
-  - slot_was_set:
-    - departure: Verona
-  - action: utter_flight_order_form_date
-  - intent: item_date
-    entities:
-    - date: March 15th 2024
-  - slot_was_set:
-    - date: March 15th 2024
-  - action: utter_flight_order_form_class
-  - intent: item_class
-    entities:
-    - class: Economy
-  - slot_was_set:
-    - class: Economy
-  - action: utter_flight_order_form_luggage
-  - intent: item_luggage
-    entities:
-    - luggage: one
-  - slot_was_set:
-    - luggage: one
-  - action: utter_flight_search_form
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change
-    entities:
-    - luggage: two
-  - slot_was_set:
-    - luggage: two
-  - action: utter_flight_search_form
-  - intent: affirm
-  - action: utter_name_info_form
-  - intent: item_surname
-    entities:
-    - name: Mary
-    - surname: Jones
-  - slot_was_set:
-    - name: Mary
-  - slot_was_set:
-    - surname: Jones
-  - action: utter_passport_info_form
-  - intent: item_passport
-    entities:
-    - passport: ABC123
-  - action: utter_ask_confirmation
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change
-    entities:
-    - class: First
-  - slot_was_set:
-    - class: First
-  - action: utter_ask_confirmation
-  - intent: affirm
+  - checkpoint: personal_details_provided
   - action: utter_payment
   - intent: item_payment_card
   - action: utter_payment_form
@@ -250,298 +113,571 @@ stories:
   - intent: item_email
     entities:
     - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
   - action: utter_confirmation_mail
   - intent: affirm
-  - action: utter_extra_need_form
+  - checkpoint: payment_completed
+
+
+
+- story: request_special_assistance
+  steps:
+  - checkpoint: payment_completed
   - intent: assistance
   - action: utter_assistance_form
   - intent: special_need
   - action: utter_assistance_confirmation
   - intent: deny
   - action: utter_goodbye
+  - checkpoint: assistance_provided
 
-
-- story: interactive_story_4
+- story: end_conversation
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: item_start_generic
-  - action: utter_flight_order_form_arrival
-  - intent: item_arrival
-    entities:
-    - arrival: Paris
-  - slot_was_set:
-    - arrival: Paris
-  - action: utter_flight_order_form_departure
-  - intent: item_departure
-    entities:
-    - departure: Verona
-  - slot_was_set:
-    - departure: Verona
-  - action: utter_flight_order_form_date
-  - intent: item_date
-    entities:
-    - date: March 15th 2024
-  - slot_was_set:
-    - date: March 15th 2024
-  - action: utter_flight_order_form_class
-  - intent: item_class
-    entities:
-    - class: Economy
-  - slot_was_set:
-    - class: Economy
-  - action: utter_flight_order_form_luggage
-  - intent: item_luggage
-    entities:
-    - luggage: one
-  - slot_was_set:
-    - luggage: one
-  - action: utter_flight_search_form
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change_departure
-  - action: utter_order_change_departure
-  - intent: item_departure
-    entities:
-    - departure: Roma
-  - slot_was_set:
-    - departure: Roma
-  - action: utter_change_something_else
-  - intent: deny
-  - action: utter_flight_search_form
-  - intent: affirm
-  - action: utter_name_info_form
-  - intent: item_surname
-    entities:
-    - name: Mary
-    - surname: Jones
-  - slot_was_set:
-    - name: Mary
-  - slot_was_set:
-    - surname: Jones
-  - action: utter_passport_info_form
-  - intent: item_passport
-    entities:
-    - passport: ABC123
-  - action: utter_ask_confirmation
-  - intent: affirm
-  - action: utter_payment
-  - intent: item_payment_card
-  - action: utter_payment_form
-  - intent: item_number_card
-  - action: utter_payment_success
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: affirm
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: deny
+  - checkpoint: assistance_provided
   - action: utter_goodbye
 
 
-- story: interactive_story_5
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: item_start_generic
-  - action: utter_flight_order_form_arrival
-  - intent: item_arrival
-    entities:
-    - arrival: Paris
-  - slot_was_set:
-    - arrival: Paris
-  - action: utter_flight_order_form_departure
-  - intent: item_departure
-    entities:
-    - departure: Verona
-  - slot_was_set:
-    - departure: Verona
-  - action: utter_flight_order_form_date
-  - intent: item_date
-    entities:
-    - date: March 15th 2024
-  - slot_was_set:
-    - date: March 15th 2024
-  - action: utter_flight_order_form_class
-  - intent: item_class
-    entities:
-    - class: Economy
-  - slot_was_set:
-    - class: Economy
-  - action: utter_flight_order_form_luggage
-  - intent: item_luggage
-    entities:
-    - luggage: one
-  - slot_was_set:
-    - luggage: one
-  - action: utter_flight_search_form
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change_departure
-  - action: utter_order_change_departure
-  - intent: item_departure
-    entities:
-    - departure: Roma
-  - slot_was_set:
-    - departure: Roma
-  - action: utter_change_something_else
-  - intent: affirm
-  - action: utter_order_confirm_negative
-  - intent: item_change_class
-  - action: utter_order_change_class
-  - intent: item_class
-    entities:
-    - class: First
-  - slot_was_set:
-    - class: First
-  - action: utter_change_something_else
-  - intent: deny
-  - action: utter_flight_search_form
-  - intent: affirm
-  - action: utter_name_info_form
-  - intent: item_surname
-    entities:
-    - name: Mary
-    - surname: Jones
-  - slot_was_set:
-    - name: Mary
-  - slot_was_set:
-    - surname: Jones
-  - action: utter_passport_info_form
-  - intent: item_passport
-    entities:
-    - passport: ABC123
-  - action: utter_ask_confirmation
-  - intent: affirm
-  - action: utter_payment
-  - intent: item_payment_card
-  - action: utter_payment_form
-  - intent: item_number_card
-  - action: utter_payment_success
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: affirm
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: affirm
-  - action: utter_extra_need_form
-  - intent: assistance
-  - action: utter_assistance_form
-  - intent: special_need
-  - action: utter_assistance_confirmation
-  - intent: deny
-  - action: utter_goodbye
+# stories:
 
 
-- story: interactive_story_6
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: item_start_generic
-  - action: utter_flight_order_form_arrival
-  - intent: item_arrival
-    entities:
-    - arrival: Paris
-  - slot_was_set:
-    - arrival: Paris
-  - action: utter_flight_order_form_departure
-  - intent: item_departure
-    entities:
-    - departure: Verona
-  - slot_was_set:
-    - departure: Verona
-  - action: utter_flight_order_form_date
-  - intent: item_date
-    entities:
-    - date: March 15th 2024
-  - slot_was_set:
-    - date: March 15th 2024
-  - action: utter_flight_order_form_class
-  - intent: item_class
-    entities:
-    - class: First
-  - slot_was_set:
-    - class: First
-  - action: utter_flight_order_form_luggage
-  - intent: item_luggage
-    entities:
-    - luggage: one
-  - slot_was_set:
-    - luggage: one
-  - action: utter_flight_search_form
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change_class
-  - action: utter_order_change_class
-  - intent: item_class
-    entities:
-    - class: First
-  - slot_was_set:
-    - class: First
-  - action: utter_change_something_else
-  - intent: deny
-  - action: utter_flight_search_form
-  - intent: affirm
-  - action: utter_name_info_form
-  - intent: item_surname
-    entities:
-    - name: Mary
-    - surname: Jones
-  - slot_was_set:
-    - name: Mary
-  - slot_was_set:
-    - surname: Jones
-  - action: utter_passport_info_form
-  - intent: item_passport
-    entities:
-    - passport: ABC123
-  - action: utter_ask_confirmation
-  - intent: deny
-  - action: utter_order_confirm_negative
-  - intent: item_change
-    entities:
-    - luggage: two
-  - slot_was_set:
-    - luggage: two
-  - action: utter_payment
-  - intent: item_payment_check_in
-  - action: utter_confirmation
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: affirm
-  - intent: item_email
-    entities:
-    - email: maryjones@unitn.it
-  - slot_was_set:
-    - email: maryjones@unitn.it
-  - action: utter_confirmation_mail
-  - intent: affirm
-  - action: utter_extra_need_form
-  - intent: assistance
-  - action: utter_assistance_form
-  - intent: special_need
-  - action: utter_assistance_confirmation
-  - intent: deny
-  - action: utter_goodbye
+# - story: interactive_story_1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: item_start_generic
+#   # - action: flight_order_form
+#   # - active_loop: flight_order_form
+#   # - slot_was_set:
+#   #   - requested_slot: departure
+#   - action: utter_flight_order_form_arrival
+#   - intent: item_arrival
+#     entities:
+#     - arrival: Paris
+#   - slot_was_set:
+#     - arrival: Paris
+#   - action: utter_flight_order_form_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Verona
+#   - slot_was_set:
+#     - departure: Verona
+#   - action: utter_flight_order_form_date
+#   - intent: item_date
+#     entities:
+#     - date: March 15th 2024
+#   - slot_was_set:
+#     - date: March 15th 2024
+#   - action: utter_flight_order_form_class
+#   - intent: item_class
+#     entities:
+#     - class: Economy
+#   - slot_was_set:
+#     - class: Economy
+#   - action: utter_flight_order_form_luggage
+#   - intent: item_luggage
+#     entities:
+#     - luggage: one
+#   - slot_was_set:
+#     - luggage: one
+#   - action: utter_flight_search_form
+#   - intent: affirm
+#   - action: utter_name_info_form
+#   - intent: item_surname
+#     entities:
+#     - name: Mary
+#     - surname: Jones
+#   - slot_was_set:
+#     - name: Mary
+#   - slot_was_set:
+#     - surname: Jones
+#   - action: utter_passport_info_form
+#   - intent: item_passport
+#     entities:
+#     - passport: ABC123
+#   - action: utter_ask_confirmation
+#   - intent: affirm
+#   - action: utter_payment
+#   - intent: item_payment_card
+#   - action: utter_payment_form
+#   - intent: item_number_card
+#   - action: utter_payment_success
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - action: utter_extra_need_form
+#   - intent: regime_form
+#   - action: utter_regime_confirmation
+#   - intent: deny
+#   - action: utter_goodbye
+
+# - story: interactive_story_2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: item_start_generic
+#   # - action: flight_order_form
+#   # - active_loop: flight_order_form
+#   # - slot_was_set:
+#   #   - requested_slot: departure
+#   - action: utter_flight_order_form_arrival
+#   - intent: item_arrival
+#     entities:
+#     - arrival: Paris
+#   - slot_was_set:
+#     - arrival: Paris
+#   - action: utter_flight_order_form_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Verona
+#   - slot_was_set:
+#     - departure: Verona
+#   - action: utter_flight_order_form_date
+#   - intent: item_date
+#     entities:
+#     - date: March 15th 2024
+#   - slot_was_set:
+#     - date: March 15th 2024
+#   - action: utter_flight_order_form_class
+#   - intent: item_class
+#     entities:
+#     - class: Economy
+#   - slot_was_set:
+#     - class: Economy
+#   - action: utter_flight_order_form_luggage
+#   - intent: item_luggage
+#     entities:
+#     - luggage: one
+#   - slot_was_set:
+#     - luggage: one
+#   - action: utter_flight_search_form
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change
+#     entities:
+#     - luggage: two
+#   - slot_was_set:
+#     - luggage: two
+#   - action: utter_flight_search_form
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change
+#     entities:
+#     - luggage: two
+#   - slot_was_set:
+#     - luggage: two
+#   - action: utter_flight_search_form
+#   - intent: affirm
+#   - action: utter_name_info_form
+#   - intent: item_surname
+#     entities:
+#     - name: Mary
+#     - surname: Jones
+#   - slot_was_set:
+#     - name: Mary
+#   - slot_was_set:
+#     - surname: Jones
+#   - action: utter_passport_info_form
+#   - intent: item_passport
+#     entities:
+#     - passport: ABC123 
+#   - action: utter_ask_confirmation
+#   - intent: affirm 
+#   - action: utter_payment
+#   - intent: item_payment_check_in
+#   - action: utter_confirmation
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: else
+#   - action: utter_can_not_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+# - story: interactive_story_3
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: item_start_generic
+#   # - action: flight_order_form
+#   # - active_loop: flight_order_form
+#   # - slot_was_set:
+#   #   - requested_slot: departure
+#   - action: utter_flight_order_form_arrival
+#   - intent: item_arrival
+#     entities:
+#     - arrival: Paris
+#   - slot_was_set:
+#     - arrival: Paris
+#   - action: utter_flight_order_form_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Verona
+#   - slot_was_set:
+#     - departure: Verona
+#   - action: utter_flight_order_form_date
+#   - intent: item_date
+#     entities:
+#     - date: March 15th 2024
+#   - slot_was_set:
+#     - date: March 15th 2024
+#   - action: utter_flight_order_form_class
+#   - intent: item_class
+#     entities:
+#     - class: Economy
+#   - slot_was_set:
+#     - class: Economy
+#   - action: utter_flight_order_form_luggage
+#   - intent: item_luggage
+#     entities:
+#     - luggage: one
+#   - slot_was_set:
+#     - luggage: one
+#   - action: utter_flight_search_form
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change
+#     entities:
+#     - luggage: two
+#   - slot_was_set:
+#     - luggage: two
+#   - action: utter_flight_search_form
+#   - intent: affirm
+#   - action: utter_name_info_form
+#   - intent: item_surname
+#     entities:
+#     - name: Mary
+#     - surname: Jones
+#   - slot_was_set:
+#     - name: Mary
+#   - slot_was_set:
+#     - surname: Jones
+#   - action: utter_passport_info_form
+#   - intent: item_passport
+#     entities:
+#     - passport: ABC123
+#   - action: utter_ask_confirmation
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change
+#     entities:
+#     - class: First
+#   - slot_was_set:
+#     - class: First
+#   - action: utter_ask_confirmation
+#   - intent: affirm
+#   - action: utter_payment
+#   - intent: item_payment_card
+#   - action: utter_payment_form
+#   - intent: item_number_card
+#   - action: utter_payment_success
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - action: utter_extra_need_form
+#   - intent: assistance
+#   - action: utter_assistance_form
+#   - intent: special_need
+#   - action: utter_assistance_confirmation
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+# - story: interactive_story_4
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: item_start_generic
+#   - action: utter_flight_order_form_arrival
+#   - intent: item_arrival
+#     entities:
+#     - arrival: Paris
+#   - slot_was_set:
+#     - arrival: Paris
+#   - action: utter_flight_order_form_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Verona
+#   - slot_was_set:
+#     - departure: Verona
+#   - action: utter_flight_order_form_date
+#   - intent: item_date
+#     entities:
+#     - date: March 15th 2024
+#   - slot_was_set:
+#     - date: March 15th 2024
+#   - action: utter_flight_order_form_class
+#   - intent: item_class
+#     entities:
+#     - class: Economy
+#   - slot_was_set:
+#     - class: Economy
+#   - action: utter_flight_order_form_luggage
+#   - intent: item_luggage
+#     entities:
+#     - luggage: one
+#   - slot_was_set:
+#     - luggage: one
+#   - action: utter_flight_search_form
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change_departure
+#   - action: utter_order_change_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Roma
+#   - slot_was_set:
+#     - departure: Roma
+#   - action: utter_change_something_else
+#   - intent: deny
+#   - action: utter_flight_search_form
+#   - intent: affirm
+#   - action: utter_name_info_form
+#   - intent: item_surname
+#     entities:
+#     - name: Mary
+#     - surname: Jones
+#   - slot_was_set:
+#     - name: Mary
+#   - slot_was_set:
+#     - surname: Jones
+#   - action: utter_passport_info_form
+#   - intent: item_passport
+#     entities:
+#     - passport: ABC123
+#   - action: utter_ask_confirmation
+#   - intent: affirm
+#   - action: utter_payment
+#   - intent: item_payment_card
+#   - action: utter_payment_form
+#   - intent: item_number_card
+#   - action: utter_payment_success
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+# - story: interactive_story_5
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: item_start_generic
+#   - action: utter_flight_order_form_arrival
+#   - intent: item_arrival
+#     entities:
+#     - arrival: Paris
+#   - slot_was_set:
+#     - arrival: Paris
+#   - action: utter_flight_order_form_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Verona
+#   - slot_was_set:
+#     - departure: Verona
+#   - action: utter_flight_order_form_date
+#   - intent: item_date
+#     entities:
+#     - date: March 15th 2024
+#   - slot_was_set:
+#     - date: March 15th 2024
+#   - action: utter_flight_order_form_class
+#   - intent: item_class
+#     entities:
+#     - class: Economy
+#   - slot_was_set:
+#     - class: Economy
+#   - action: utter_flight_order_form_luggage
+#   - intent: item_luggage
+#     entities:
+#     - luggage: one
+#   - slot_was_set:
+#     - luggage: one
+#   - action: utter_flight_search_form
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change_departure
+#   - action: utter_order_change_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Roma
+#   - slot_was_set:
+#     - departure: Roma
+#   - action: utter_change_something_else
+#   - intent: affirm
+#   - action: utter_order_confirm_negative
+#   - intent: item_change_class
+#   - action: utter_order_change_class
+#   - intent: item_class
+#     entities:
+#     - class: First
+#   - slot_was_set:
+#     - class: First
+#   - action: utter_change_something_else
+#   - intent: deny
+#   - action: utter_flight_search_form
+#   - intent: affirm
+#   - action: utter_name_info_form
+#   - intent: item_surname
+#     entities:
+#     - name: Mary
+#     - surname: Jones
+#   - slot_was_set:
+#     - name: Mary
+#   - slot_was_set:
+#     - surname: Jones
+#   - action: utter_passport_info_form
+#   - intent: item_passport
+#     entities:
+#     - passport: ABC123
+#   - action: utter_ask_confirmation
+#   - intent: affirm
+#   - action: utter_payment
+#   - intent: item_payment_card
+#   - action: utter_payment_form
+#   - intent: item_number_card
+#   - action: utter_payment_success
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - action: utter_extra_need_form
+#   - intent: assistance
+#   - action: utter_assistance_form
+#   - intent: special_need
+#   - action: utter_assistance_confirmation
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+# - story: interactive_story_6
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: item_start_generic
+#   - action: utter_flight_order_form_arrival
+#   - intent: item_arrival
+#     entities:
+#     - arrival: Paris
+#   - slot_was_set:
+#     - arrival: Paris
+#   - action: utter_flight_order_form_departure
+#   - intent: item_departure
+#     entities:
+#     - departure: Verona
+#   - slot_was_set:
+#     - departure: Verona
+#   - action: utter_flight_order_form_date
+#   - intent: item_date
+#     entities:
+#     - date: March 15th 2024
+#   - slot_was_set:
+#     - date: March 15th 2024
+#   - action: utter_flight_order_form_class
+#   - intent: item_class
+#     entities:
+#     - class: First
+#   - slot_was_set:
+#     - class: First
+#   - action: utter_flight_order_form_luggage
+#   - intent: item_luggage
+#     entities:
+#     - luggage: one
+#   - slot_was_set:
+#     - luggage: one
+#   - action: utter_flight_search_form
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change_class
+#   - action: utter_order_change_class
+#   - intent: item_class
+#     entities:
+#     - class: First
+#   - slot_was_set:
+#     - class: First
+#   - action: utter_change_something_else
+#   - intent: deny
+#   - action: utter_flight_search_form
+#   - intent: affirm
+#   - action: utter_name_info_form
+#   - intent: item_surname
+#     entities:
+#     - name: Mary
+#     - surname: Jones
+#   - slot_was_set:
+#     - name: Mary
+#   - slot_was_set:
+#     - surname: Jones
+#   - action: utter_passport_info_form
+#   - intent: item_passport
+#     entities:
+#     - passport: ABC123
+#   - action: utter_ask_confirmation
+#   - intent: deny
+#   - action: utter_order_confirm_negative
+#   - intent: item_change
+#     entities:
+#     - luggage: two
+#   - slot_was_set:
+#     - luggage: two
+#   - action: utter_payment
+#   - intent: item_payment_check_in
+#   - action: utter_confirmation
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - intent: item_email
+#     entities:
+#     - email: maryjones@unitn.it
+#   - slot_was_set:
+#     - email: maryjones@unitn.it
+#   - action: utter_confirmation_mail
+#   - intent: affirm
+#   - action: utter_extra_need_form
+#   - intent: assistance
+#   - action: utter_assistance_form
+#   - intent: special_need
+#   - action: utter_assistance_confirmation
+#   - intent: deny
+#   - action: utter_goodbye
