@@ -108,6 +108,20 @@ nlu:
     - Yes
     - great
     - Great
+
+- intent: affirm_need_help
+  examples: |
+    - yes
+    - yes I need help
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - Yes I need help
+    - yes I need something else
+    - Yes I need something else
+    
 - intent: deny
   examples: |
     - no
