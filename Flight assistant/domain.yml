@@ -22,7 +22,7 @@ intents:
 - item_firstname
 - item_luggage
 - item_number_card
-- item_passport_number
+- item_passport
 - item_payment_card
 - item_payment_check_in
 - item_question_passport
@@ -35,7 +35,7 @@ entities:
 - surname
 - email
 - class
-- passport_number
+- passport
 - arrival
 - date
 - departure
@@ -145,7 +145,7 @@ responses:
   utter_ask_confirmation:
   - text: Can you please confirm the following informations; Flight from {departure} to {arrival} on the {date} at 8:05 AM for 165 € in {class} class with {luggage} additional luggage(s) in the name of {name} {surname}.
   utter_payment:
-  - text: Great, how would you like to pay ?
+  - text: Great, how would you like to pay ? Card od check in at the desk?
   utter_payment_form:
   - text: Okay, can you please privode me with your card number ?
   utter_payment_success:

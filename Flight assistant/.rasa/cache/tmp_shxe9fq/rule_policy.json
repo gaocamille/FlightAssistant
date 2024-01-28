@@ -1,0 +1,25 @@
+{
+  "lookup": {
+    "rules": {
+      "[{}]": "action_listen",
+      "[{}, {\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}]": "utter_greet",
+      "[{}, {\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}, {\"prev_action\": {\"action_name\": \"utter_greet\"}, \"user\": {\"intent\": \"greet\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"item_surname\"}}]": "utter_passport_info_form",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"item_surname\"}}, {\"prev_action\": {\"action_name\": \"utter_passport_info_form\"}, \"user\": {\"intent\": \"item_surname\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"item_start_generic\"}}]": "utter_flight_order_form_arrival",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"item_start_generic\"}}, {\"prev_action\": {\"action_name\": \"utter_flight_order_form_arrival\"}, \"user\": {\"intent\": \"item_start_generic\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"item_payment_card\"}}]": "utter_payment_form",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"item_payment_card\"}}, {\"prev_action\": {\"action_name\": \"utter_payment_form\"}, \"user\": {\"intent\": \"item_payment_card\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "predicting default action with intent session_start",
+      "predicting default action with intent back",
+      "handling active loops and forms - flight_order_form",
+      "handling active loops and forms - flight_order_form - action_listen",
+      "predicting default action with intent restart"
+    ]
+  }
+}
