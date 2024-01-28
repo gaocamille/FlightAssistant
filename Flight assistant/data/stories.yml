@@ -43,7 +43,9 @@ stories:
   - intent: affirm
   - checkpoint: flight_proposal_confirmed
 
-#changer les luggages
+###################### changing fields before personal info #####################
+
+#change luggages
 - story: propose_flight_and_request_change
   steps:
   - checkpoint: flight_details_confirmed
@@ -54,7 +56,7 @@ stories:
   - action: utter_order_change_luggage
   - intent: item_luggage
     entities:
-    - luggage: {slot:luggage}
+    - luggage: {slot: luggage}
   - action: utter_change_something_else
   - intent: deny
   - action: utter_flight_search_form
@@ -62,7 +64,7 @@ stories:
   - checkpoint: flight_proposal_confirmed
 
 
-#changer les luggages puis la classe
+#change luggages then something else
 - story: propose_flight_and_request_change
   steps:
   - checkpoint: flight_details_confirmed
@@ -73,15 +75,21 @@ stories:
   - action: utter_order_change_luggage
   - intent: item_luggage
     entities:
-    - luggage: two
+    - luggage: {slot: luggage}
   - action: utter_change_something_else
   - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change class after changing another field
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
   - action: utter_order_confirm_negative
   - intent: item_change_class
   - action: utter_order_change_class
   - intent: item_class
     entities:
-    - class: First
+    - class: {slot: class}
   - action: utter_change_something_else
   - intent: deny
   - action: utter_flight_search_form
@@ -89,7 +97,7 @@ stories:
   - checkpoint: flight_proposal_confirmed
 
 
-#changer le départ
+#change departure
 - story: propose_flight_and_request_change
   steps:
   - checkpoint: flight_details_confirmed
@@ -100,12 +108,33 @@ stories:
   - action: utter_order_change_departure
   - intent: item_departure
     entities:
-    - departure: Roma
+    - departure: {slot: departure}
   - action: utter_change_something_else
   - intent: deny
   - action: utter_flight_search_form
   - intent: affirm
   - checkpoint: flight_proposal_confirmed
+
+
+#change departure then something else
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
+    entities:
+    - departure: {slot: departure}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+
+
+################## change fields after entering personal info ###################
 
 #changer un departure après avoir donner son nom et num. passeport
 - story: propose_flight_and_request_change_after_person_info
@@ -116,14 +145,21 @@ stories:
   - action: utter_order_change_departure
   - intent: item_departure
     entities:
-    - departure: {slot:departure}
+    - departure: {slot: departure}
   - action: utter_change_something_else
   - intent: deny
   - action: utter_ask_confirmation
   - intent: affirm
   - checkpoint: personal_details_provided
 
-#nom et passeport et confirmation positive
+
+
+
+
+
+
+###################################################################################
+# personal info & positive confirmation
 - story: enter_personal_details_after_flight_confirmation
   steps:
   - checkpoint: flight_proposal_confirmed
@@ -141,7 +177,7 @@ stories:
   - checkpoint: personal_details_provided
   
   
-# #nom et passeport et confirmation négative
+# personal info & negative confirmation
 - story: modify_details_after_personal_details
   steps:
   - checkpoint: flight_proposal_confirmed
@@ -159,7 +195,7 @@ stories:
   - checkpoint: personal_info_given
 
 
-#paiement check in puis email
+#payment check in then email
 - story: payment_at_check_in
   steps:
   - checkpoint: personal_details_provided
@@ -173,7 +209,7 @@ stories:
   - intent: affirm
   - checkpoint: payment_completed
 
-#paiement carte puis email
+#payment card then email
 - story: payment_by_card
   steps:
   - checkpoint: personal_details_provided
