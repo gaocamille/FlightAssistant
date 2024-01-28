@@ -1,6 +1,7 @@
 version: '3.1'
 intents:
 - affirm
+- affirm_need_help
 - assistance
 - deny
 - else
@@ -71,11 +72,16 @@ slots:
     mappings:
     - type: from_entity
       entity: luggage
-  payment:
-    type: any
+  payment_check_in:
+    type: text
     mappings:
     - type: from_entity
-      entity: payment
+      entity: payment_check_in
+  payment_card:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: payment_card
   email:
     type: any
     mappings:
@@ -85,7 +91,8 @@ slots:
     type: any
     mappings:
     - type: from_entity
-      entity: passport_number
+      entity: passport
+
   name:
     type: any
     mappings:
@@ -141,7 +148,7 @@ responses:
   utter_name_info_form:
   - text: To what name is this reservation ?
   utter_flight_search_form:
-  - text: Great, I found a flight from {departure} to {arrival} on the {date} at 8:05 AM for 165€. Is this okay for you ?
+  - text: Great, I found a flight from {departure} to {arrival} in {class} class on the {date} at 8:05 AM for 165€. Is this okay for you ?
   utter_ask_confirmation:
   - text: Can you please confirm the following informations; Flight from {departure} to {arrival} on the {date} at 8:05 AM for 165 € in {class} class with {luggage} additional luggage(s) in the name of {name} {surname}.
   utter_payment:
