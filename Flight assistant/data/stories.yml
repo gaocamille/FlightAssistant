@@ -10,6 +10,7 @@ stories:
   - action: utter_flight_order_form_arrival
   - checkpoint: flight_details_entry
 
+#entrer les informations du vol
 - story: enter_flight_details
   steps:
   - checkpoint: flight_details_entry
@@ -34,7 +35,7 @@ stories:
     - luggage: one
   - checkpoint: flight_details_confirmed
 
-
+#proposer un vol et le confirmer
 - story: propose_and_confirm_flight
   steps:
   - checkpoint: flight_details_confirmed
@@ -42,6 +43,26 @@ stories:
   - intent: affirm
   - checkpoint: flight_proposal_confirmed
 
+#changer les luggages
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_luggage
+  - action: utter_order_change_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot:luggage}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+
+#changer les luggages puis la classe
 - story: propose_flight_and_request_change
   steps:
   - checkpoint: flight_details_confirmed
@@ -53,12 +74,56 @@ stories:
   - intent: item_luggage
     entities:
     - luggage: two
-  # Répéter les étapes nécessaires (demander si besoin de qqchose autre)
+  - action: utter_change_something_else
+  - intent: affirm
+  - action: utter_order_confirm_negative
+  - intent: item_change_class
+  - action: utter_order_change_class
+  - intent: item_class
+    entities:
+    - class: First
+  - action: utter_change_something_else
+  - intent: deny
   - action: utter_flight_search_form
   - intent: affirm
   - checkpoint: flight_proposal_confirmed
 
 
+#changer le départ
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
+    entities:
+    - departure: Roma
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+#changer un departure après avoir donner son nom et num. passeport
+- story: propose_flight_and_request_change_after_person_info
+  steps:
+  - checkpoint: personal_info_given
+  - action: utter_order_confirm_negative
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
+    entities:
+    - departure: {slot:departure}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_ask_confirmation
+  - intent: affirm
+  - checkpoint: personal_details_provided
+
+#nom et passeport et confirmation positive
 - story: enter_personal_details_after_flight_confirmation
   steps:
   - checkpoint: flight_proposal_confirmed
@@ -71,24 +136,30 @@ stories:
   - intent: item_passport
     entities:
     - passport: ABC123
+  - action: utter_ask_confirmation
+  - intent: affirm
   - checkpoint: personal_details_provided
+  
+  
+# #nom et passeport et confirmation négative
+- story: modify_details_after_personal_details
+  steps:
+  - checkpoint: flight_proposal_confirmed
+  - action: utter_name_info_form
+  - intent: item_surname
+    entities:
+    - name: Mary
+    - surname: Jones
+  - action: utter_passport_info_form
+  - intent: item_passport
+    entities:
+    - passport: ABC123
+  - action: utter_ask_confirmation
+  - intent: deny
+  - checkpoint: personal_info_given
 
 
-# - story: confirm_and_pay
-#   steps:
-#   - checkpoint: flight_details_confirmed
-#   - action: utter_ask_confirmation
-#   - intent: affirm
-#   - action: utter_payment
-#   - intent: item_payment_card
-#   - action: utter_payment_form
-#   - intent: item_number_card
-#   - action: utter_payment_success
-#   - checkpoint: payment_completed
-
-
-
-
+#paiement check in puis email
 - story: payment_at_check_in
   steps:
   - checkpoint: personal_details_provided
@@ -102,6 +173,7 @@ stories:
   - intent: affirm
   - checkpoint: payment_completed
 
+#paiement carte puis email
 - story: payment_by_card
   steps:
   - checkpoint: personal_details_provided
@@ -118,7 +190,7 @@ stories:
   - checkpoint: payment_completed
 
 
-
+# a changer --> 
 - story: request_special_assistance
   steps:
   - checkpoint: payment_completed
@@ -130,6 +202,8 @@ stories:
   - action: utter_goodbye
   - checkpoint: assistance_provided
 
+
+#fin de convo
 - story: end_conversation
   steps:
   - checkpoint: assistance_provided

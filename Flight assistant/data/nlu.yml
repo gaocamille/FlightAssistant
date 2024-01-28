@@ -49,6 +49,11 @@ nlu:
     - From [Roma](departure)
     - I'll leave from [Roma](departure)
     - leave from [Roma](departure)
+    - [Milano](departure)
+    - from [Milano](departure)
+    - From [Milano](departure)
+    - I'll leave from [Milano](departure)
+    - leave from [Milano](departure)
 - intent: item_date
   examples: |
     - [March 15th 2024](date)
@@ -147,7 +152,7 @@ nlu:
     - the class
     - I'd like to change the class
     - I want to change to the class
-- intent: item_change_lugagge
+- intent: item_change_luggage
   examples: |
     - change number of luggage
     - change the number of luggage
