@@ -14,6 +14,75 @@ stories:
   - checkpoint: init_flight_question_time
   - intent : utter_init_flight_question_time
 
+  #MODIFICATIONS  A JOUTER DANS STORIES.YML
+
+- story: need_after_email_confirmation
+  steps:
+  - checkpoint: payment_completed
+  - intent: affirm
+  - action: utter_extra_need_form
+  - intent: special_need
+  - action: utter_assistance_confirmation
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: assistance_provided
+
+- story: need_after_email_confirmation
+  steps:
+  - checkpoint: payment_completed
+  - intent: affirm
+  - action: utter_extra_need_form
+  - intent: regime
+  - action: utter_regime_form
+  - intent: regime_form
+  - action: utter_regime_confirmation
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: assistance_provided
+
+- story: change_date_first_confirmation
+  steps:
+  - checkpoint: flight_details_entry
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_date
+  - action: utter_order_change_date
+  - intent: item_date
+  - checkpoint: flight_details_confirmed
+
+- story: change_departure_first_confirmation
+  steps:
+  - checkpoint: flight_details_entry
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
+  - checkpoint: flight_details_confirmed
+
+- story: change_class_first_confirmation
+  steps:
+  - checkpoint: flight_details_entry
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_class
+  - action: utter_order_change_class
+  - intent: item_class
+  - checkpoint: flight_details_confirmed
+
+- story: change_luggage_first_confirmation
+  steps:
+  - checkpoint: flight_details_entry
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_luggage
+  - action: utter_order_change_luggage
+  - intent: item_luggage
+  - checkpoint: flight_details_confirmed
+
+
+
+
 # - story: flight interjection
 #   steps:
 #   - intent: item_start_generic
