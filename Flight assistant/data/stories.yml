@@ -225,19 +225,63 @@ stories:
   - intent: affirm
   - checkpoint: payment_completed
 
-
-# a changer --> 
+#need assistance after the payment
 - story: request_special_assistance
   steps:
   - checkpoint: payment_completed
-  - intent: assistance
-  - action: utter_assistance_form
+  - intent: affirm_need_help
+  - action: utter_extra_need_form
   - intent: special_need
   - action: utter_assistance_confirmation
   - intent: deny
   - action: utter_goodbye
   - checkpoint: assistance_provided
 
+#need regime after the payment
+- story: request_special_assistance
+  steps:
+  - checkpoint: payment_completed
+  - intent: affirm_need_help
+  - action: utter_extra_need_form
+  - intent: regime
+  - action: utter_regime_form
+  - intent: regime_form
+  - action: utter_regime_confirmation
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: assistance_provided
+
+#need regime after wheelchair
+- story: request_special_assistance
+  steps:
+  - checkpoint: payment_completed
+  - intent: affirm_need_help
+  - action: utter_extra_need_form
+  - intent: special_need
+  - action: utter_assistance_confirmation
+  - intent: regime
+  - action: utter_regime_form
+  - intent: regime_form
+  - action: utter_regime_confirmation
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: assistance_provided
+  
+#need wheelchair after regime
+- story: request_special_assistance
+  steps:
+  - checkpoint: payment_completed
+  - intent: affirm_need_help
+  - action: utter_extra_need_form
+  - intent: regime
+  - action: utter_regime_form
+  - intent: regime_form
+  - action: utter_regime_confirmation
+  - intent: special_need
+  - action: utter_assistance_confirmation
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: assistance_provided
 
 #fin de convo
 - story: end_conversation

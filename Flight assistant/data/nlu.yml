@@ -118,6 +118,7 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - Yes
     - Yes I need help
     - yes I need something else
     - Yes I need something else
@@ -270,6 +271,7 @@ nlu:
     - I will need help
 - intent: special_need
   examples: |
+    - Yes I have a wheelchair
     - Since I have a wheelchair, I have reduced mobility. Could I receive help getting on board?
     - I have a wheelchair
     - I have reduced mobility
@@ -277,6 +279,7 @@ nlu:
     - Reduced mobility
 - intent: regime
   examples: |
+    - Yes I have a particular regime  
     - Particular regime
     - regime
     - I have a particular regime
