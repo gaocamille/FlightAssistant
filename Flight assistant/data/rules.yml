@@ -1,2 +1,46 @@
 version: "3.1"
 
+rules:
+
+- rule: Say `hello` when the user starts a conversation with intent `greet`
+  conversation_start: true
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Gérer le *flight_form*
+  steps:
+  - intent: item_start_generic
+  - action: utter_flight_order_form_arrival
+  - active_loop: flight_order_form
+  - intent: item_arrival
+  - action: utter_flight_order_form_departure
+  - intent: item_departure
+  - action: utter_flight_order_form_date
+  - intent: item_date
+  - action: utter_flight_order_form_class
+  - intent: item_class
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+  - action: utter_flight_search_form
+
+- rule: Gérer le *user_form*
+  steps:
+  - intent: item_surname
+  - action: utter_passport_info_form
+  - intent: item_passport
+  - action: utter_ask_confirmation
+
+- rule: Gérer le *payment_form*
+  steps:
+  - intent: item_payment_card
+  - action: utter_payment_form
+  - intent: item_number_card
+  - action: utter_payment_success
+  - intent: item_email
+  - action: utter_confirmation_mail
+
+- rule: Gérer le *extra_needs_form*
+  steps:
+  - intent: assistance
+  - action: utter_extra_need_form
