@@ -244,6 +244,36 @@ stories:
   - intent: affirm
   - checkpoint: payment_completed
 
+#payment check in then email
+- story: payment_at_check_in
+  steps:
+  - checkpoint: personal_details_provided
+  - action: utter_payment
+  - intent: item_payment_check_in
+  - action: utter_confirmation
+  - intent: item_email
+    entities:
+    - email: maryjones@unitn.it
+  - action: utter_confirmation_mail
+  - intent: deny
+  - action: utter_goodbye
+
+#payment card then email
+- story: payment_by_card
+  steps:
+  - checkpoint: personal_details_provided
+  - action: utter_payment
+  - intent: item_payment_card
+  - action: utter_payment_form
+  - intent: item_number_card
+  - action: utter_payment_success
+  - intent: item_email
+    entities:
+    - email: maryjones@unitn.it
+  - action: utter_confirmation_mail
+  - intent: deny
+  - action: utter_goodbye
+
 ###################################################################################
 #need assistance + other
 - story: request_assistance

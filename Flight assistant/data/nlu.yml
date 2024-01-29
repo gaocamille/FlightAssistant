@@ -43,8 +43,8 @@ nlu:
     - To [Paris](arrival)
     - go to [Paris](arrival)
     - Go to [Paris](arrival)
-    - go to [Lyon](arrival)
-    - Go to [Lyon](arrival)
+    - [Lyon](arrival)
+    - [Lyon](arrival)
 - intent: item_departure
   examples: |
     - [Verona](departure)

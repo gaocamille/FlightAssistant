@@ -15,10 +15,10 @@ rules:
 #     - action: flight_order_form
 #     - active_loop: flight_order_form
 
-# - rule: change_randomly
-#   steps:
-#   - intent: change_random
-#   - action: utter_order_confirm_negative
+- rule: change_randomly
+  steps:
+  - intent: item_change
+  - action: utter_item_change
 
 # - rule: help
 #   steps:
