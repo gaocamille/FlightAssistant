@@ -119,9 +119,9 @@ slots:
 responses:
   utter_greet:
   - text: Hey! Welcome to Flight Assistant, how can I help you?
-  utter_init_flight_price:
+  utter_init_flight_question_price:
   - text: A flight from Verona to Paris is 65€.
-  utter_init_flight_quesiton_time:
+  utter_init_flight_question_time:
   - text: A flight from Verona to Paris is 1:50 hours long.
   utter_flight_order_form_departure:
   - text: From where do you leave?
@@ -211,7 +211,7 @@ actions:
 - utter_payment_form
 - utter_can_not_help
 - utter_confirmation
-- utter_init_flight_price
+- utter_init_flight_question_price
 - utter_init_flight_quesiton_time
 - utter_extra_need
 - utter_food_preferences_intent
@@ -223,7 +223,7 @@ actions:
 - utter_order_change_class
 - utter_order_change_date
 - utter_change_something_else
- 
+
 forms:
   flight_order_form:
     required_slots:
