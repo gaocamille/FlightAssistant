@@ -15,20 +15,20 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: init_flight_question_price
-  - action: utter_flight_question_price
+  - action: utter_init_flight_question_price
 
 - story: start_booking_process
   steps:
   - intent: greet
   - action: utter_greet
   - intent: init_flight_question_time
-  - action: utter_flight_question_time
+  - action: utter_init_flight_question_time
 
 - story: goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
-  
+
 #entrer les informations du vol
 - story: enter_flight_details
   steps:
@@ -249,7 +249,7 @@ stories:
 - story: request_assistance
   steps:
   - checkpoint: payment_completed
-  - intent: affirm_need_help #Yes I need help
+  - intent: affirm
   - action: utter_extra_need_form #Sure, tell me, what can I help you with 
   - intent: assistance #I need an assistance
   - action: utter_assistance_form #Can you please tell me what is your need; Reduced mobility, Hearing impaired, Visually impaired

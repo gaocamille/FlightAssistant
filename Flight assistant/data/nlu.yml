@@ -271,6 +271,7 @@ nlu:
     - give me the directions to time square
 - intent: assistance
   examples: |
+    - Yes I need an assistance
     - I need some additional assistance
     - I need additional assistance
     - I need an assistance
