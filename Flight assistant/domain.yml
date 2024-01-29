@@ -15,6 +15,7 @@ intents:
 - item_change_date
 - item_change_departure
 - item_change_class
+- item_change_arrival
 - item_changed_unpricised
 - item_class
 - item_date
@@ -32,6 +33,7 @@ intents:
 - regime
 - regime_form
 - special_need
+- change_random
 entities:
 - surname
 - email
@@ -139,6 +141,8 @@ responses:
   - text: How many luggages do you want to add ?
   utter_order_change_departure:
   - text: Where do you want to travel from ?
+  utter_order_change_arrival:
+  - text: Where do you want to go ?
   utter_order_change_class:
   - text: What class do you wish to travel in ?
   utter_order_change_date:
@@ -215,6 +219,7 @@ actions:
 - utter_passport_location
 - utter_order_change_luggage
 - utter_order_change_departure
+- utter_order_change_arrival
 - utter_order_change_class
 - utter_order_change_date
 - utter_change_something_else
