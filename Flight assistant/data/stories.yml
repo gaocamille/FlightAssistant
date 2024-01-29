@@ -64,26 +64,30 @@ stories:
   - checkpoint: flight_proposal_confirmed
 
 
-#change luggages then something else
+#change departure
 - story: propose_flight_and_request_change
   steps:
   - checkpoint: flight_details_confirmed
   - action: utter_flight_search_form
   - intent: deny
   - action: utter_order_confirm_negative
-  - intent: item_change_luggage
-  - action: utter_order_change_luggage
-  - intent: item_luggage
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
     entities:
-    - luggage: {slot: luggage}
+    - departure: {slot: departure}
   - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
   - intent: affirm
-  - checkpoint: another_request_is_asked
+  - checkpoint: flight_proposal_confirmed
 
-#change class after changing another field
-- story: request_change_after_another_request
+#change class
+- story: propose_flight_and_request_change
   steps:
-  - checkpoint: another_request_is_asked
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
   - action: utter_order_confirm_negative
   - intent: item_change_class
   - action: utter_order_change_class
@@ -97,18 +101,36 @@ stories:
   - checkpoint: flight_proposal_confirmed
 
 
-#change departure
+#change arrival
 - story: propose_flight_and_request_change
   steps:
   - checkpoint: flight_details_confirmed
   - action: utter_flight_search_form
   - intent: deny
   - action: utter_order_confirm_negative
-  - intent: item_change_departure
-  - action: utter_order_change_departure
-  - intent: item_departure
+  - intent: item_change_arrival
+  - action: utter_order_change_arrival
+  - intent: item_arrival
     entities:
-    - departure: {slot: departure}
+    - arrival: {slot: arrival}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+#change date
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_date
+  - action: utter_order_change_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
   - action: utter_change_something_else
   - intent: deny
   - action: utter_flight_search_form
@@ -133,10 +155,226 @@ stories:
   - checkpoint: another_request_is_asked
 
 
+#change luggages then something else
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_luggage
+  - action: utter_order_change_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change class then something else
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_class
+  - action: utter_order_change_class
+  - intent: item_class
+    entities:
+    - class: {slot: class}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change arrival then something else
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_arrival
+  - action: utter_order_change_arrival
+  - intent: item_arrival
+    entities:
+    - arrival: {slot: arrival}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change date then something else
+- story: propose_flight_and_request_change
+  steps:
+  - checkpoint: flight_details_confirmed
+  - action: utter_flight_search_form
+  - intent: deny
+  - action: utter_order_confirm_negative
+  - intent: item_change_date
+  - action: utter_order_change_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+
+
+#change class after changing another field
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_class
+  - action: utter_order_change_class
+  - intent: item_class
+    entities:
+    - class: {slot: class}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+#change class after changing another field and change something else after
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_class
+  - action: utter_order_change_class
+  - intent: item_class
+    entities:
+    - class: {slot: class}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change arrival after changing another field
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_arrival
+  - action: utter_order_change_arrival
+  - intent: item_arrival
+    entities:
+    - arrival: {slot: arrival}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+#change arrival after changing another field and change spmething else after
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_arrival
+  - action: utter_order_change_arrival
+  - intent: item_arrival
+    entities:
+    - arrival: {slot: arrival}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change departure after changing another field
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
+    entities:
+    - departure: {slot: departure}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+#change departure after changing another field and change spmething else after
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_departure
+  - action: utter_order_change_departure
+  - intent: item_departure
+    entities:
+    - departure: {slot: departure}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change luggage after changing another field
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_luggage
+  - action: utter_order_change_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+#change luggage after changing another field and change something else after
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_luggage
+  - action: utter_order_change_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
+#change date after changing another field
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_date
+  - action: utter_order_change_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_flight_search_form
+  - intent: affirm
+  - checkpoint: flight_proposal_confirmed
+
+#change date after changing another field and change something else after
+- story: request_change_after_another_request
+  steps:
+  - checkpoint: another_request_is_asked
+  - action: utter_order_confirm_negative
+  - intent: item_change_date
+  - action: utter_order_change_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
+  - action: utter_change_something_else
+  - intent: affirm
+  - checkpoint: another_request_is_asked
+
 
 ################## change fields after entering personal info ###################
 
-#changer un departure après avoir donner son nom et num. passeport
+#change departure after personal info
 - story: propose_flight_and_request_change_after_person_info
   steps:
   - checkpoint: personal_info_given
@@ -152,6 +390,69 @@ stories:
   - intent: affirm
   - checkpoint: personal_details_provided
 
+# change arrival after personal info
+- story: propose_flight_and_request_change_after_person_info
+  steps:
+  - checkpoint: personal_info_given
+  - action: utter_order_confirm_negative
+  - intent: item_change_arrival
+  - action: utter_order_change_arrival
+  - intent: item_arrival
+    entities:
+    - arrival: {slot: arrival}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_ask_confirmation
+  - intent: affirm
+  - checkpoint: personal_details_provided
+
+# change class after personal info
+- story: propose_flight_and_request_change_after_person_info
+  steps:
+  - checkpoint: personal_info_given
+  - action: utter_order_confirm_negative
+  - intent: item_change_class
+  - action: utter_order_change_class
+  - intent: item_class
+    entities:
+    - class: {slot: class}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_ask_confirmation
+  - intent: affirm
+  - checkpoint: personal_details_provided
+
+# change luggage after personal info
+- story: propose_flight_and_request_change_after_person_info
+  steps:
+  - checkpoint: personal_info_given
+  - action: utter_order_confirm_negative
+  - intent: item_change_luggage
+  - action: utter_order_change_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_ask_confirmation
+  - intent: affirm
+  - checkpoint: personal_details_provided
+
+# change date after personal info
+- story: propose_flight_and_request_change_after_person_info
+  steps:
+  - checkpoint: personal_info_given
+  - action: utter_order_confirm_negative
+  - intent: item_change_date
+  - action: utter_order_change_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
+  - action: utter_change_something_else
+  - intent: deny
+  - action: utter_ask_confirmation
+  - intent: affirm
+  - checkpoint: personal_details_provided
 
 
 
@@ -225,63 +526,19 @@ stories:
   - intent: affirm
   - checkpoint: payment_completed
 
-#need assistance after the payment
+
+# a changer --> 
 - story: request_special_assistance
   steps:
   - checkpoint: payment_completed
-  - intent: affirm_need_help
-  - action: utter_extra_need_form
+  - intent: assistance
+  - action: utter_assistance_form
   - intent: special_need
   - action: utter_assistance_confirmation
   - intent: deny
   - action: utter_goodbye
   - checkpoint: assistance_provided
 
-#need regime after the payment
-- story: request_special_assistance
-  steps:
-  - checkpoint: payment_completed
-  - intent: affirm_need_help
-  - action: utter_extra_need_form
-  - intent: regime
-  - action: utter_regime_form
-  - intent: regime_form
-  - action: utter_regime_confirmation
-  - intent: deny
-  - action: utter_goodbye
-  - checkpoint: assistance_provided
-
-#need regime after wheelchair
-- story: request_special_assistance
-  steps:
-  - checkpoint: payment_completed
-  - intent: affirm_need_help
-  - action: utter_extra_need_form
-  - intent: special_need
-  - action: utter_assistance_confirmation
-  - intent: regime
-  - action: utter_regime_form
-  - intent: regime_form
-  - action: utter_regime_confirmation
-  - intent: deny
-  - action: utter_goodbye
-  - checkpoint: assistance_provided
-  
-#need wheelchair after regime
-- story: request_special_assistance
-  steps:
-  - checkpoint: payment_completed
-  - intent: affirm_need_help
-  - action: utter_extra_need_form
-  - intent: regime
-  - action: utter_regime_form
-  - intent: regime_form
-  - action: utter_regime_confirmation
-  - intent: special_need
-  - action: utter_assistance_confirmation
-  - intent: deny
-  - action: utter_goodbye
-  - checkpoint: assistance_provided
 
 #fin de convo
 - story: end_conversation
