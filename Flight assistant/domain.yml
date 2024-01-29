@@ -166,11 +166,11 @@ responses:
   utter_extra_need_form:
   - text: Sure, tell me, what can I help you with ?
   utter_assistance_form:
-  - text: Can you please tell me what is your need: Reduced mobility, Hearing impaired, Visually impaired
+  - text: Can you please tell me what is your need; Reduced mobility, Hearing impaired, Visually impaired
   utter_assistance_confirmation:
   - text: Okay, we will do the necessary for your arrival at the airport. Do you need anything else ?
   utter_regime_form:
-  - text: Can you please indicate your special regime: vegetarian/vegan, halal/kasher, gluten free, dairy free
+  - text: Can you please indicate your special regime; vegetarian/vegan, halal/kasher, gluten free, dairy free
   utter_regime_confirmation:
   - text: Okay, your information have been registered with success. Do you have any other request ?
   utter_can_not_help:
