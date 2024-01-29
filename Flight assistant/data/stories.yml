@@ -676,6 +676,88 @@ stories:
   - intent: affirm
   - checkpoint: payment_completed
 
+###################################################################################
+#need assistance + other
+- story: request_assistance
+  steps:
+  - checkpoint: payment_completed
+  - intent: affirm_need_help #Yes
+  - action: utter_extra_need_form #Sure, tell me, what can I help you with 
+  - intent: special_need #I have a wheelchair
+  - action: utter_assistance_confirmation #Okay, we will do the necessary for your arrival at the airport. Do you need anything else ?
+  - checkpoint: assistance_provided_need_other
+
+  #need assistance + end
+- story: request_assistance_end
+  steps:
+  - checkpoint: assistance_provided_need_other
+  - intent: deny #No
+  - action: utter_goodbye
+  - checkpoint: assistance_end
+
+  #need assistance +  regime + end
+- story: request_assistance_regime_end
+  steps:
+  - checkpoint: assistance_provided_need_other
+  - intent: affirm #Yes
+  - action: utter_extra_need_form #Sure, tell me, what can I help you with 
+  - intent: regime
+  - action: utter_regime_form
+  - intent: regime_form
+  - action: utter_regime_confirmation
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: assistance_regime_provided_end
+
+  #need regime + other
+- story: request_need_other
+  steps:
+  - checkpoint: payment_completed
+  - intent: regime
+  - action: utter_regime_form
+  - intent: regime_form
+  - action: utter_regime_confirmation
+  - checkpoint: regime_provided_need_other
+
+  #need regime + end
+- story: request_need_end
+  steps:
+  - checkpoint: regime_provided_need_other
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: regime_provided_end
+
+#need regime + asisstance + end
+- story: request_regime_asstance_need
+  steps:
+  - checkpoint: regime_provided_need_other
+  - intent: affirm
+  - action: utter_extra_need_form #Sure, tell me, what can I help you with 
+  - intent: special_need
+  - action: utter_assistance_confirmation
+  - intent: deny
+  - action: utter_goodbye
+  - checkpoint: regime_assistance_provided_end
+
+###################################################################################
+#question for the passport
+- story: enter_personal_details_after_flight_confirmation
+  steps:
+  - checkpoint: flight_proposal_confirmed
+  - action: utter_name_info_form
+  - intent: item_surname
+    entities:
+    - name: Mary
+    - surname: Jones
+  - action: utter_passport_info_form
+  - intent: item_question_passport
+  - action: utter_passport_location  
+  - intent: item_passport
+    entities:
+    - passport: ABC123
+  - action: utter_ask_confirmation
+  - intent: affirm
+  - checkpoint: personal_details_provided
 
 
 
