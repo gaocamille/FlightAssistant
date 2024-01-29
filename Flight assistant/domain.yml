@@ -180,7 +180,7 @@ responses:
   utter_can_not_help:
   - text: Sorry, I cannot help you with that. Do you have any other request ?
   utter_out_of_scope:
-  - text: Sorry, I cannot help you with that.
+  - text: Sorry, I cannot help you with that. Please answer to the previous question.
   utter_passport_info_form:
   - text: What is your passport number ?
   utter_passport_location:
@@ -189,6 +189,8 @@ responses:
   - text: Okay ! So you want to change the departure date to {date} and to {class} class.
   utter_goodbye:
   - text: Okay perfect, I wish you an excellent flight. Goodbye :)
+  utter_item_change:
+  - text: Ok, your modification has been registered. Please answer the previous question.
 actions:
 - utter_goodbye
 - utter_confirmation_mail
@@ -223,6 +225,7 @@ actions:
 - utter_order_change_class
 - utter_order_change_date
 - utter_change_something_else
+- utter_item_change
 
 forms:
   flight_order_form:
