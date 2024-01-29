@@ -7,6 +7,7 @@ nlu:
     - hi
     - Hi
     - Hello
+    - h
 - intent: goodbye
   examples: |
     - bye
@@ -29,10 +30,13 @@ nlu:
     - I want to book
     - I want to make a booking
     - book a flight
+    - B
+    - b
 - intent: item_arrival
   examples: |
     - I want to go to [Paris](arrival)
     - [Paris](arrival)
+    - [P](arrival)
     - to [Paris](arrival)
     - To [Paris](arrival)
     - go to [Paris](arrival)
@@ -40,6 +44,7 @@ nlu:
 - intent: item_departure
   examples: |
     - [Verona](departure)
+    - [VerVona](departure)
     - from [Verona](departure)
     - From [Verona](departure)
     - I'll leave from [Verona](departure)
@@ -250,7 +255,7 @@ nlu:
     - Where can I find the passport number?
     - What is the passport number ?
     - what's the passport number ?
-- intent: else
+- intent: out_of_scope
   examples: |
     - When is the chinese new year?
     - What is 2 + 2?
