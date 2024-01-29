@@ -153,6 +153,14 @@ nlu:
     - change departure
     - departure
     - Change the departure
+- intent: item_change_arrival
+  examples: |
+    - I want to change the arrival
+    - I'd like to change the arrival
+    - change arrival
+    - arrival
+    - Change the arrival
+    - destination
 - intent: item_change_date
   examples: |
     - I want to change the departure date
@@ -304,3 +312,11 @@ nlu:
     - I'm vegan
     - Vegan
     - Vegetarian
+- intent: change_random
+  examples: |
+    - Change
+    - change
+    - I want to change something
+    - change something 
+    - changed my mind
+    - I changed my mind
