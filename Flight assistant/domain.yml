@@ -1,13 +1,12 @@
 version: '3.1'
 intents:
 - affirm
-- affirm_need_help
 - assistance
 - deny
 - out_of_scope
 - goodbye
 - greet
-- init_flight_quesiton_time
+- init_flight_question_time
 - init_flight_question_price
 - item_arrival
 - item_change
@@ -16,7 +15,6 @@ intents:
 - item_change_departure
 - item_change_class
 - item_change_arrival
-- item_changed_unpricised
 - item_class
 - item_date
 - item_departure
@@ -33,7 +31,7 @@ intents:
 - regime
 - food_preferences_intent
 - special_need
-- change_random
+- item_greet_request_uncomplete
 entities:
 - surname
 - email
@@ -94,7 +92,6 @@ slots:
     mappings:
     - type: from_entity
       entity: passport
-
   name:
     type: any
     mappings:
@@ -133,8 +130,6 @@ responses:
   - text: Do you want to fly in Economy, business or First class?
   utter_flight_order_form_luggage:
   - text: How many luggage do you want to add ?
-  utter_flight_order_form_return_ticket:
-  - text: Do you want to add a return ticket?
   utter_order_confirm_negative:
   - text: What do you wish to change ?
   utter_order_change_luggage:
@@ -177,16 +172,16 @@ responses:
   - text: Can you please indicate your special regime; vegetarian/vegan, halal/kasher, gluten free, dairy free?
   utter_regime_confirmation:
   - text: Okay, your information have been registered with success. Do you have any other request ?
-  utter_can_not_help:
-  - text: Sorry, I cannot help you with that. Do you have any other request ?
+  # utter_can_not_help:
+  # - text: Sorry, I cannot help you with that. Do you have any other request ?
   utter_out_of_scope:
   - text: Sorry, I cannot help you with that. Please answer to the previous question.
   utter_passport_info_form:
   - text: What is your passport number ?
   utter_passport_location:
   - text: Your passport number is the number present on top of the identity page of your passport. Go ahead. 
-  utter_item_change_departure_class:
-  - text: Okay ! So you want to change the departure date to {date} and to {class} class.
+  # utter_item_change_departure_class:
+  # - text: Okay ! So you want to change the departure date to {date} and to {class} class.
   utter_goodbye:
   - text: Okay perfect, I wish you an excellent flight. Goodbye :)
   utter_item_change:
@@ -211,10 +206,9 @@ actions:
 - utter_payment
 - utter_flight_order_form_departure
 - utter_payment_form
-- utter_can_not_help
 - utter_confirmation
 - utter_init_flight_question_price
-- utter_init_flight_quesiton_time
+- utter_init_flight_question_time
 - utter_extra_need
 - utter_food_preferences_intent
 - utter_regime_confirmation
