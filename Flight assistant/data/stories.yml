@@ -688,6 +688,25 @@ stories:
   - intent: deny
   - checkpoint: personal_info_given
 
+# personal info & question passport & negative confirmation
+- story: modify_details_after_personal_details
+  steps:
+  - checkpoint: flight_proposal_confirmed
+  - action: utter_name_info_form
+  - intent: item_surname
+    entities:
+    - name: Mary
+    - surname: Jones
+  - action: utter_passport_info_form
+  - intent: item_question_passport
+  - action: utter_passport_location  
+  - intent: item_passport
+    entities:
+    - passport: ABC123 
+  - action: utter_ask_confirmation
+  - intent: deny
+  - checkpoint: personal_info_given
+
 
 #payment check in then email then help
 - story: payment_at_check_in
