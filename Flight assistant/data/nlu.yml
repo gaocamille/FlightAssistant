@@ -45,6 +45,17 @@ nlu:
     - Go to [Paris](arrival)
     - [Lyon](arrival)
     - [Lyon](arrival)
+- intent: item_greet_request_uncomplete
+  examples: |
+    - I want to go to [Paris](arrival) on [March 15th 2024](date) in [first](class).
+    - Go to [Paris](arrival) on [March 15th 2024](date) in [first](class).
+    - I want to go to [Paris](arrival) on [March 15th 2024](date) in [business](class).
+    - Go to [Paris](arrival) on [March 15th 2024](date) in [business](class).
+    - I want to go to [Lyon](arrival) on [March 15th 2024](date) in [first](class).
+    - Go to [Lyon](arrival) on [March 15th 2024](date) in [first](class).
+    - I want to go to [Lyon](arrival) on [March 15th 2024](date) in [business](class).
+    - Go to [Lyon](arrival) on [March 15th 2024](date) in [business](class).
+
 - intent: item_departure
   examples: |
     - [Verona](departure)
@@ -89,7 +100,6 @@ nlu:
     - Yes I want to add [one](luggage) luggage
     - Yes I want to add [one](luggage) luggage please
     - I want to add [one](luggage) luggage please
-    - [Yes](luggage)
     - [zero](luggage)
     - [one](luggage)
     - [two](luggage)
@@ -115,11 +125,11 @@ nlu:
     - great
     - Great
 
-- intent: affirm_need_help
-  examples: |
-    - Yes I need help
-    - yes I need something else
-    - Yes I need something else
+# - intent: affirm_need_help
+#   examples: |
+#     - Yes I need help
+#     - yes I need something else
+#     - Yes I need something else
     
 - intent: deny
   examples: |
@@ -181,18 +191,18 @@ nlu:
     - luggage
     - I want to change the number of luggage
     - I'd like to change the number of luggage
-- intent: item_changed_unpricised
-  examples: |
-    - I changed my mind
-    - I want to change something
-    - I want to change
-    - change
-    - Actually I want to change
-    - actually I want to change
-    - can I change something
-    - Can I change
-    - can I change
-    - Can I change something
+# - intent: item_changed_unpricised
+#   examples: |
+#     - I changed my mind
+#     - I want to change something
+#     - I want to change
+#     - change
+#     - Actually I want to change
+#     - actually I want to change
+#     - can I change something
+#     - Can I change
+#     - can I change
+#     - Can I change something
 - intent: item_payment_card
   examples: |
     - Card
@@ -305,11 +315,11 @@ nlu:
     - I'm vegan
     - Vegan
     - Vegetarian
-- intent: change_random
-  examples: |
-    - Change
-    - change
-    - I want to change something
-    - change something 
-    - changed my mind
-    - I changed my mind
+# - intent: change_random
+#   examples: |
+#     - Change
+#     - change
+#     - I want to change something
+#     - change something 
+#     - changed my mind
+#     - I changed my mind

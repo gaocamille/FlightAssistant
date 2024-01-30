@@ -36,7 +36,6 @@ stories:
 
 
 
-
 - story: enter_flight_details
   steps:
   - checkpoint: flight_details_entry
@@ -55,6 +54,26 @@ stories:
   - intent: item_class
     entities:
     - class: {slot: class}
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - checkpoint: flight_details_confirmed
+
+# the user gives many info (destination, date, class) but incomplete
+- story: enter_flight_details_incomplete
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: item_greet_request_uncomplete
+    entities:
+    - arrival: {slot: arrival}
+    - date: {slot: date}
+    - class: {slot: class}
+  - action: utter_flight_order_form_departure
+  - intent: item_departure
+    entities:
+    - departure: {slot: departure}
   - action: utter_flight_order_form_luggage
   - intent: item_luggage
     entities:

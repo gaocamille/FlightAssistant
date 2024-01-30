@@ -20,6 +20,11 @@ rules:
   - intent: item_change
   - action: utter_item_change
 
+- rule: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
 # - rule: help
 #   steps:
 #   - intent: assistance
