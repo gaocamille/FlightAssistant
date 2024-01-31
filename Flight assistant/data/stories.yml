@@ -41,11 +41,11 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: init_flight_question_price
+  - intent: init_question_price
     entities:
     - arrival: {slot: arrival}
     - departure: {slot: departure}
-  - action: utter_init_flight_question_price
+  - action: utter_init_question_price
   - intent: affirm
   - action: utter_flight_order_form_class
   - intent: item_class
@@ -68,8 +68,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: init_flight_question_price
-  - action: utter_init_flight_question_price
+  - intent: init_question_price
+  - action: utter_init_question_price
   - intent: deny
   - action: utter_greet
   - intent: item_start_generic
@@ -82,11 +82,11 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: init_flight_question_time
+  - intent: init_question_time
     entities:
     - arrival: {slot: arrival}
     - departure: {slot: departure}
-  - action: utter_init_flight_question_time
+  - action: utter_init_question_time
   - intent: affirm
   - action: utter_flight_order_form_class
   - intent: item_class
@@ -109,8 +109,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: init_flight_question_time
-  - action: utter_init_flight_question_time
+  - intent: init_question_time
+  - action: utter_init_question_time
   - intent: deny
   - action: utter_greet
   - intent: item_start_generic
