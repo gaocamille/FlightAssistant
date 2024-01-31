@@ -14,14 +14,17 @@ nlu:
     - goodbye
     - Goodbye
     - Bye
-- intent: init_flight_question_price
+- intent: init_question_price
   examples: |
-    - How much is a flight from Verona to Paris?
+    - how much is a flight from Verona to Paris?
     - How much is a flight from Verona to Paris ?
-- intent: init_flight_question_time
+    - How much is a flight from Roma to Paris ?
+    - What's the price of a flight from Roma to Paris ?
+- intent: init_question_time
   examples: |
-    - How long is a flight from Verona to Paris?
+    - how long is a flight from Verona to Paris?
     - How long is a flight from Verona to Paris ?
+    - How much time is a flight from Roma to Paris ?
 - intent: item_start_generic
   examples: |
     - I want to book a flight
@@ -45,6 +48,20 @@ nlu:
     - Go to [Paris](arrival)
     - [Lyon](arrival)
     - [Lyon](arrival)
+    - [London](arrival)
+    - [Rome](arrival)
+    - [Berlin](arrival)
+    - [Frankfurt](arrival)
+    - [Vienna](arrival)
+    - [Madrid](arrival)
+    - [Barcelona](arrival)
+    - [Prague](arrival)
+    - [Oslo](arrival)
+    - [Dublin](arrival)
+    - [Budapest](arrival)
+    - [Bucarest](arrival)
+    - [Amsterdam](arrival)
+    - [Stockholm](arrival)
 - intent: item_greet_request_uncomplete
   examples: |
     - I want to go to [Paris](arrival) on [March 15th 2024](date) in [first](class).
@@ -55,6 +72,12 @@ nlu:
     - Go to [Lyon](arrival) on [March 15th 2024](date) in [first](class).
     - I want to go to [Lyon](arrival) on [March 15th 2024](date) in [business](class).
     - Go to [Lyon](arrival) on [March 15th 2024](date) in [business](class).
+
+- intent: item_question_destination_europe
+  examples: |
+    - Where can I go in Europe ?
+    - What cities in Europe do you propose ?
+    - What cities in Europe can I go to ?
 
 - intent: item_departure
   examples: |
@@ -143,7 +166,7 @@ nlu:
     - I'd like to change the departure date to [March 16th 2024](date) instead
     - Actually I want to change to [First](class) class instead
     - I want to change the departure date to [March 16th 2024](date) and to [First](class) class instead
-    - I want to change the destination to [Vienna](destination)
+    - I want to change the destination to [Vienna](arrival)
     - Actually, can I get [one](luggage) luggage?
     - actually, i'd like [two](luggage) luggages
     - I changed my mind, I want to change the departure date to [March 16th 2024](date) and to [First](class) class instead
@@ -315,6 +338,14 @@ nlu:
     - I'm vegan
     - Vegan
     - Vegetarian
+- intent: init_question_luggage
+  examples: |
+    - How much is it for one luggage ?
+    - Is the cabine lugagge already included ?
+    - Are lugagges free ?
+    - How much is it for two lugagges ?
+
+    
 # - intent: change_random
 #   examples: |
 #     - Change

@@ -14,15 +14,16 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: init_flight_question_price
-  - action: utter_init_flight_question_price
+  - intent: init_question_price
+  - action: utter_init_question_price
 
 - story: start_booking_process
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: init_flight_question_time
-  - action: utter_init_flight_question_time
+  - intent: init_question_time
+  - action: utter_init_question_time
+
 
 
 # - story: flight_booking_process
@@ -74,6 +75,54 @@ stories:
   - intent: item_departure
     entities:
     - departure: {slot: departure}
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - checkpoint: flight_details_confirmed
+
+
+
+# questions cities in europe
+
+- story: start_booking_process
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: item_question_destination_europe
+  - action: utter_question_cities_europe
+  - intent: affirm
+  - checkpoint: flight_details_entry
+
+- story: start_booking_process
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: item_question_destination_europe
+  - action: utter_question_cities_europe
+  - intent: deny
+  - intent: item_start_generic
+  - action: utter_flight_order_form_arrival
+  - checkpoint: flight_details_entry
+
+- story: enter_flight_details
+  steps:
+  - checkpoint: flight_details_entry
+  - intent: item_arrival
+    entities:
+    - arrival: {slot: arrival}
+  - action: utter_flight_order_form_departure
+  - intent: item_departure
+    entities:
+    - departure: {slot: departure}
+  - action: utter_flight_order_form_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
+  - action: utter_flight_order_form_class
+  - intent: item_class
+    entities:
+    - class: {slot: class}
   - action: utter_flight_order_form_luggage
   - intent: item_luggage
     entities:

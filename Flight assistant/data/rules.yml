@@ -25,6 +25,13 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
+
+- rule: question_on_luggage
+  steps:
+  - intent: init_question_luggage
+  - action: utter_question_luggage
+  
+
 # - rule: help
 #   steps:
 #   - intent: assistance
