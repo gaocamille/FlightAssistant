@@ -35,7 +35,87 @@ stories:
 #     - action: action_listen
 #     - checkpoint: flight_details_confirmed
 
+# the user asks a question about the price and want to book
+# the user gives many info (destination, date) but incomplete
+- story: enter_flight_details_incomplete_price_book
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: init_flight_question_price
+    entities:
+    - arrival: {slot: arrival}
+    - departure: {slot: departure}
+  - action: utter_init_flight_question_price
+  - intent: affirm
+  - action: utter_flight_order_form_class
+  - intent: item_class
+    entities:
+    - class: {slot: class}
+  - action: utter_flight_order_form_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - checkpoint: flight_details_confirmed
 
+
+  # the user asks a question about the price and DON'T want to book
+  # the user gives many info (destination, date) but incomplete
+- story: enter_flight_details_incomplete_price_no_book
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: init_flight_question_price
+  - action: utter_init_flight_question_price
+  - intent: deny
+  - action: utter_greet
+  - intent: item_start_generic
+  - action: utter_flight_order_form_arrival
+  - checkpoint: flight_details_entry
+
+  # the user asks a question about the time and want to book
+  # the user gives many info (destination, date) but incomplete
+- story: enter_flight_details_incomplete_time_no_book
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: init_flight_question_time
+    entities:
+    - arrival: {slot: arrival}
+    - departure: {slot: departure}
+  - action: utter_init_flight_question_time
+  - intent: affirm
+  - action: utter_flight_order_form_class
+  - intent: item_class
+    entities:
+    - class: {slot: class}
+  - action: utter_flight_order_form_date
+  - intent: item_date
+    entities:
+    - date: {slot: date}
+  - action: utter_flight_order_form_luggage
+  - intent: item_luggage
+    entities:
+    - luggage: {slot: luggage}
+  - checkpoint: flight_details_confirmed
+
+
+  # the user asks a question about the time and DON'T want to book
+  # the user gives many info (destination, date) but incomplete
+- story: enter_flight_details_incomplete_time_book
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: init_flight_question_time
+  - action: utter_init_flight_question_time
+  - intent: deny
+  - action: utter_greet
+  - intent: item_start_generic
+  - action: utter_flight_order_form_arrival
+  - checkpoint: flight_details_entry
 
 - story: enter_flight_details
   steps:
