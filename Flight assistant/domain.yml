@@ -3,37 +3,37 @@ intents:
 - affirm
 - assistance
 - deny
-- out_of_scope
+- food_preferences_intent
 - goodbye
 - greet
-- init_question_time
-- init_question_price
 - init_question_luggage
+- init_question_price
+- init_question_time
 - item_arrival
 - item_change
-- item_change_luggage
+- item_change_arrival
+- item_change_class
 - item_change_date
 - item_change_departure
-- item_change_class
-- item_change_arrival
+- item_change_luggage
 - item_class
 - item_date
 - item_departure
 - item_email
 - item_firstname
+- item_greet_request_uncomplete
 - item_luggage
 - item_number_card
 - item_passport
 - item_payment_card
 - item_payment_check_in
+- item_question_destination_europe
 - item_question_passport
 - item_start_generic
 - item_surname
+- out_of_scope
 - regime
-- food_preferences_intent
 - special_need
-- item_greet_request_uncomplete
-- item_question_destination_europe
 entities:
 - surname
 - email
@@ -48,7 +48,6 @@ entities:
 - payment_card
 - schedule
 - cost
-
 slots:
   departure:
     type: any
@@ -163,8 +162,6 @@ responses:
   - text: Noted ! I will now send you your e-ticket and detailed itinerary by mail. To what email adress should I send this e-ticket ?
   utter_confirmation_mail:
   - text: I just sent you the information and the e-ticket, it is possible that the email takes a few minutes to arrive. Do you need anything else ?
-  # utter_extra_need:
-  # - text: Do you need anything else ?
   utter_extra_need_form:
   - text: Sure, tell me, what can I help you with ?
   utter_assistance_form:
@@ -175,47 +172,26 @@ responses:
   - text: Can you please indicate your special regime; vegetarian/vegan, halal/kasher, gluten free, dairy free?
   utter_regime_confirmation:
   - text: Okay, your information have been registered with success. Do you have any other request ?
-  # utter_can_not_help:
-  # - text: Sorry, I cannot help you with that. Do you have any other request ?
   utter_out_of_scope:
   - text: Sorry, I cannot help you with that. Please answer to the previous question.
   utter_passport_info_form:
   - text: What is your passport number ?
   utter_passport_location:
-  - text: Your passport number is the number present on top of the identity page of your passport. Go ahead. 
-  # utter_item_change_departure_class:
-  # - text: Okay ! So you want to change the departure date to {date} and to {class} class.
+  - text: Your passport number is the number present on top of the identity page of your passport. Go ahead.
   utter_goodbye:
   - text: Okay perfect, I wish you an excellent flight. Goodbye :)
   utter_item_change:
   - text: Ok, your modification has been registered. Please answer the previous question.
   utter_question_cities_europe:
-  - text: Here is a list of the cities in Europe where you can go to; 
-      Paris
-      Lyon
-      London
-      Rome
-      Berlin
-      Frankfurt
-      Vienna
-      Madrid
-      Barcelona
-      Prague
-      Oslo
-      Dublin
-      Budapest
-      Bucarest
-      Amsterdam
-      Stockholm
-      Do you want to book a flight to one of these cities ?
+  - text: Here is a list of the cities in Europe where you can go to; Paris Lyon London Rome Berlin Frankfurt Vienna Madrid Barcelona Prague Oslo Dublin Budapest Bucarest Amsterdam Stockholm Do you want to book a flight to one of these cities ?
   utter_question_luggage:
-  - text: You are allowed to take a cabine luggage for free. You will have to count 30€ for any supplement luggage of 23kg you decide to add. How many luggages do you with to add ?
+  - text: You are allowed to take a cabine luggage for free. You will have to count 30€ for any supplement luggage of 23kg you decide to add. How many luggages do you want to add ?
 actions:
+- utter_greet
+- utter_flight_order_form_arrival
 - utter_goodbye
 - utter_confirmation_mail
 - utter_order_confirm_negative
-- utter_greet
-- utter_flight_order_form_arrival
 - utter_flight_order_form_luggage
 - utter_assistance_confirmation
 - utter_payment_success
@@ -245,7 +221,6 @@ actions:
 - utter_item_change
 - utter_question_luggage
 - utter_question_cities_europe
-
 forms:
   flight_order_form:
     required_slots:
