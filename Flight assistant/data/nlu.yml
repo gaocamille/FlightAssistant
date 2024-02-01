@@ -16,15 +16,15 @@ nlu:
     - Bye
 - intent: init_question_price
   examples: |
-    - how much is a flight from Verona to Paris?
-    - How much is a flight from Verona to Paris ?
-    - How much is a flight from Roma to Paris ?
-    - What's the price of a flight from Roma to Paris ?
+    - how much is a flight from [Verona](departure) to [Paris](arrival)?
+    - How much is a flight from [Verona](departure) to [Paris](arrival) ?
+    - How much is a flight from [Roma](departure) to [Paris](arrival) ?
+    - What's the price of a flight from [Roma](departure) to [Paris](arrival) ?
 - intent: init_question_time
   examples: |
-    - how long is a flight from Verona to Paris?
-    - How long is a flight from Verona to Paris ?
-    - How much time is a flight from Roma to Paris ?
+    - how long is a flight from [Verona](departure) to [Paris](arrival)?
+    - How long is a flight from [Verona](departure) to [Paris](arrival) ?
+    - How much time is a flight from [Roma](departure) to [Paris](arrival) ?
 - intent: item_start_generic
   examples: |
     - I want to book a flight
@@ -46,7 +46,6 @@ nlu:
     - To [Paris](arrival)
     - go to [Paris](arrival)
     - Go to [Paris](arrival)
-    - [Lyon](arrival)
     - [Lyon](arrival)
     - [London](arrival)
     - [Rome](arrival)
@@ -72,13 +71,11 @@ nlu:
     - Go to [Lyon](arrival) on [March 15th 2024](date) in [first](class).
     - I want to go to [Lyon](arrival) on [March 15th 2024](date) in [business](class).
     - Go to [Lyon](arrival) on [March 15th 2024](date) in [business](class).
-
 - intent: item_question_destination_europe
   examples: |
     - Where can I go in Europe ?
     - What cities in Europe do you propose ?
     - What cities in Europe can I go to ?
-
 - intent: item_departure
   examples: |
     - [Verona](departure)
@@ -117,7 +114,6 @@ nlu:
     - I want to travel in [economy](class)
     - I want to travel in [business](class)
     - I want to travel in [first](class)
-    - [Economy](class)
 - intent: item_luggage
   examples: |
     - Yes I want to add [one](luggage) luggage
@@ -135,7 +131,6 @@ nlu:
     - ([(0, 1, '0')])(luggage)
     - ([(0, 1, '1')])(luggage)
     - ([(0, 1, '2')])(luggage)
-
 - intent: affirm
   examples: |
     - yes
@@ -147,13 +142,6 @@ nlu:
     - Yes
     - great
     - Great
-
-# - intent: affirm_need_help
-#   examples: |
-#     - Yes I need help
-#     - yes I need something else
-#     - Yes I need something else
-    
 - intent: deny
   examples: |
     - no
@@ -170,8 +158,6 @@ nlu:
     - Actually, can I get [one](luggage) luggage?
     - actually, i'd like [two](luggage) luggages
     - I changed my mind, I want to change the departure date to [March 16th 2024](date) and to [First](class) class instead
-    - actually, i'd like [two](luggage) luggages
-    - Actually I want to change to [First](class) class instead
 - intent: item_change_departure
   examples: |
     - I want to change the departure
@@ -214,18 +200,6 @@ nlu:
     - luggage
     - I want to change the number of luggage
     - I'd like to change the number of luggage
-# - intent: item_changed_unpricised
-#   examples: |
-#     - I changed my mind
-#     - I want to change something
-#     - I want to change
-#     - change
-#     - Actually I want to change
-#     - actually I want to change
-#     - can I change something
-#     - Can I change
-#     - can I change
-#     - Can I change something
 - intent: item_payment_card
   examples: |
     - Card
@@ -278,11 +252,9 @@ nlu:
     - [JONES](surname)
     - [jones](surname)
     - [Mary](name) [Jones](surname)
-    - [Mary](name) [Jones](surname)
 - intent: item_passport
   examples: |
     - My passport number is [ABC123](passport)
-    - [ABC123](passport)
     - [ABC123](passport)
 - intent: item_question_passport
   examples: |
@@ -318,7 +290,7 @@ nlu:
     - Reduced mobility
 - intent: regime
   examples: |
-    - Yes I have a particular regime  
+    - Yes I have a particular regime
     - Particular regime
     - regime
     - I have a particular regime
@@ -344,13 +316,3 @@ nlu:
     - Is the cabine lugagge already included ?
     - Are lugagges free ?
     - How much is it for two lugagges ?
-
-    
-# - intent: change_random
-#   examples: |
-#     - Change
-#     - change
-#     - I want to change something
-#     - change something 
-#     - changed my mind
-#     - I changed my mind
