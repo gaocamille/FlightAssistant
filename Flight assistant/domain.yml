@@ -34,6 +34,7 @@ intents:
 - out_of_scope
 - regime
 - special_need
+
 entities:
 - surname
 - email

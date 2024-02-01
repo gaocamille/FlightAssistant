@@ -1,0 +1,397 @@
+{
+    "interactionModel": {
+      "languageModel": {
+        "invocationName": "mon assistant de réservation",
+        "intents": [
+          {
+            "name": "AMAZON.FallbackIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.CancelIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.HelpIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.StopIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.NavigateHomeIntent",
+            "samples": []
+          },
+          {
+            "name": "greetIntent",
+            "samples": ["hey", "hello", "hi", "Hi", "Hello", "h"]
+          },
+          {
+            "name": "goodbyeIntent",
+            "samples": ["bye", "goodbye", "Goodbye", "Bye"]
+          },
+          {
+            "name": "init_question_priceIntent",
+            "samples": [
+              "how much is a flight from Verona to Paris",
+              "How much is a flight from Verona to Paris",
+              "How much is a flight from Roma to Paris",
+              "What's the price of a flight from Roma to Paris"
+            ]
+          },
+          {
+            "name": "init_question_timeIntent",
+            "samples": [
+              "how long is a flight from Verona to Paris",
+              "How long is a flight from Verona to Paris",
+              "How much time is a flight from Roma to Paris"
+            ]
+          },
+          {
+            "name": "item_start_genericIntent",
+            "samples": [
+              "I want to book a flight",
+              "i want to book a flight",
+              "Book",
+              "Book a flight",
+              "book",
+              "I want to book",
+              "I want to make a booking",
+              "book a flight",
+              "B",
+              "b"
+            ]
+          },
+          {
+            "name": "item_arrivalIntent",
+            "slots": [
+              {
+                "name": "arrivalCity",
+                "type": "AMAZON.City"
+              }
+            ],
+            "samples": ["I want to go to {arrivalCity}", "{arrivalCity}"]
+          },
+          {
+            "name": "item_greet_request_uncompleteIntent",
+            "slots": [
+              {
+                "name": "arrivalCity",
+                "type": "AMAZON.City"
+              },
+              {
+                "name": "travelDate",
+                "type": "AMAZON.DATE"
+              },
+              {
+                "name": "travelClass",
+                "type": "class"
+              }
+            ],
+            "samples": [
+              "I want to go to {arrivalCity} on {travelDate} in {travelClass}",
+              "Go to {arrivalCity} on {travelDate} in {travelClass}"
+            ]
+          },
+          {
+            "name": "item_question_destination_europeIntent",
+            "samples": [
+              "Where can I go in Europe",
+              "What cities in Europe do you propose",
+              "What cities in Europe can I go to"
+            ]
+          },
+          {
+            "name": "item_departureIntent",
+            "slots": [
+              {
+                "name": "departureCity",
+                "type": "AMAZON.City"
+              }
+            ],
+            "samples": ["{departureCity}", "from {departureCity}", "From {departureCity}", "I'll leave from {departureCity}", "leave from {departureCity}"]
+          },
+          {
+            "name": "item_dateIntent",
+            "slots": [
+              {
+                "name": "departureDate",
+                "type": "AMAZON.DATE"
+              }
+            ],
+            "samples": ["{departureDate}", "I will leave on {departureDate}", "On {departureDate}", "on {departureDate}"]
+          },
+          {
+            "name": "item_classIntent",
+            "slots": [
+              {
+                "name": "travelClass",
+                "type": "class"
+              }
+            ],
+            "samples": ["{travelClass}", "I want to travel in {travelClass}"]
+          },
+          {
+            "name": "item_luggageIntent",
+            "slots": [
+              {
+                "name": "numberOfLuggage",
+                "type": "AMAZON.NUMBER"
+              }
+            ],
+            "samples": [
+              "Yes I want to add {numberOfLuggage} luggage",
+              "Yes I want to add {numberOfLuggage} luggage please",
+              "I want to add {numberOfLuggage} luggage please",
+              "I will have {numberOfLuggage} luggage",
+              "I will have {numberOfLuggage} luggages",
+              "{numberOfLuggage}"
+            ]
+          },
+          {
+            "name": "affirmIntent",
+            "samples": ["yes", "y", "indeed", "of course", "that sounds good", "correct", "Yes", "great", "Great"]
+          },
+          {
+            "name": "denyIntent",
+            "samples": ["no", "n", "No", "nop"]
+          },
+          {
+            "name": "item_changeIntent",
+            "slots": [
+              {
+                "name": "departureDate",
+                "type": "AMAZON.DATE"
+              },
+              {
+                "name": "travelClass",
+                "type": "class"
+              },
+              {
+                "name": "arrivalCity",
+                "type": "AMAZON.City"
+              },
+              {
+                "name": "numberOfLuggage",
+                "type": "AMAZON.NUMBER"
+              }
+            ],
+            "samples": [
+              "I changed my booking. I want to change the departure date to {departureDate} and travel in {travelClass} class instead",
+              "I'd like to change the departure date to {departureDate} and travel in {travelClass} class instead",
+              "Actually I want to change to {travelClass} class instead",
+              "I want to change the departure date to {departureDate} and add {numberOfLuggage} luggage",
+              "I want to change the destination to {arrivalCity}",
+              "Actually can I add {numberOfLuggage} luggage"
+            ]
+          },
+          {
+            "name": "item_change_departureIntent",
+            "samples": ["I want to change the departure", "I'd like to change the departure", "change departure", "departure", "Change the departure"]
+          },
+          {
+            "name": "item_change_arrivalIntent",
+            "samples": ["I want to change the arrival", "I'd like to change the arrival", "change arrival", "arrival", "Change the arrival", "destination"]
+          },
+          {
+            "name": "item_change_dateIntent",
+            "samples": ["I want to change the departure date", "I'd like to change the departure date", "I want to change the date", "I'd like to change the date", "change departure date", "change date", "date", "departure date", "Change the date"]
+          },
+          {
+            "name": "item_change_classIntent",
+            "samples": ["change the class", "change class", "class", "the class", "I'd like to change the class", "I want to change to the class"]
+          },
+          {
+            "name": "item_change_luggageIntent",
+            "samples": ["change number of luggage", "change the number of luggage", "change luggage", "luggage", "I want to change the number of luggage", "I'd like to change the number of luggage"]
+          },
+          {
+            "name": "item_payment_cardIntent",
+            "samples": ["Card", "card", "I would like to pay by card", "I want to pay by card", "by card", "By card", "pay by card", "Pay by card"]
+          },
+          {
+            "name": "item_number_cardIntent",
+            "samples": [
+              "My card number is {card_number}",
+              "{card_number}"
+            ],
+            "slots": [
+              {
+                "name": "card_number",
+                "type": "AMAZON.NUMBER"
+              }
+            ]
+          },
+          {
+            "name": "item_payment_check_inIntent",
+            "samples": ["check in", "Check in", "check in desk", "Check in desk", "I want to pay at the check-in desk", "I would like to pay at the check-in desk", "at the check-in", "At the check-in", "at the check-in desk", "At the check-in desk", "pay at the check-in desk", "Pay at the check-in desk"]
+          },
+          {
+            "name": "item_emailIntent",
+            "slots": [
+              {
+                "name": "emailAddress",
+                "type": "AMAZON.EmailAddress"
+              }
+            ],
+            "samples": ["My email is {emailAddress}", "{emailAddress}", "at {emailAddress}"]
+          },
+          {
+            "name": "item_firstnameIntent",
+            "samples": ["my name is {name}", "My name is {name}", "{name}", "{name}"],
+            "slots": [
+              {
+                "name": "name",
+                "type": "AMAZON.Person"
+              }
+            ]
+          },
+          {
+            "name": "item_surnameIntent",
+            "samples": ["my surname is {surname}", "My surname is {surname}", "{surname}", "{surname}"],
+            "slots": [
+              {
+                "name": "surname",
+                "type": "CustomLastname"
+              }
+            ]
+          },
+          {
+            "name": "PassportIntent",
+            "slots": [
+              {
+                "name": "passport",
+                "type": "passport_number"
+              }
+            ],
+            "samples": ["My passport number is {passport}", "{passport}", "{passport}"]
+          },
+          {
+            "name": "item_question_passportIntent",
+            "samples": ["Where can I find my passport number", "Where can I find the passport number", "What is the passport number", "what's the passport number"]
+          },
+          {
+            "name": "out_of_scopeIntent",
+            "samples": [
+              "When is the Chinese New Year",
+              "Who's the US President",
+              "do you have shoes",
+              "what is your name",
+              "are you real",
+              "do you have a sister",
+              "book a flight from Milan to NY",
+              "how far is the square",
+              "give me the directions to Times Square"
+            ]
+          },
+          {
+            "name": "assistanceIntent",
+            "samples": ["Yes I need assistance", "I need some additional assistance", "I need additional assistance", "I need assistance"]
+          },
+          {
+            "name": "special_needIntent",
+            "samples": ["Yes I have a wheelchair", "Since I have a wheelchair I have reduced mobility. Could I receive help getting on board", "I have a wheelchair", "I have reduced mobility", "reduced mobility", "Reduced mobility"]
+          },
+          {
+            "name": "regimeIntent",
+            "samples": ["Yes I have a particular regime", "Particular regime", "regime", "I have a particular regime", "particular regime"]
+          },
+          {
+            "name": "food_preferences_intentIntent",
+            "samples": ["I am vegetarian", "I am gluten-free", "I don't eat meat", "I am allergic to peanuts", "allergic to peanuts", "I eat halal", "I eat kosher", "Halal", "Kosher", "I am vegan", "I'm vegan", "Vegan", "Vegetarian"]
+          },
+          {
+            "name": "init_question_luggageIntent",
+            "samples": ["How much is it for one luggage", "Is the cabin luggage already included", "Are luggages free", "How much is it for two luggages"]
+          }
+        ],
+        "types": [
+          {
+            "name": "class",
+            "values": [
+              {
+                "id": "economy",
+                "name": {
+                  "value": "economy",
+                  "synonyms": ["economy class", "economy"]
+                }
+              },
+              {
+                "id": "business",
+                "name": {
+                  "value": "business",
+                  "synonyms": ["business class", "business"]
+                }
+              },
+              {
+                "id": "first",
+                "name": {
+                  "value": "first",
+                  "synonyms": ["first class", "first"]
+                }
+              }
+            ]
+          },
+          {
+            "name": "CustomLastname",
+            "values": [
+              {
+                "id": "smith",
+                "name": {
+                  "value": "Smith",
+                  "synonyms": ["Smith"]
+                }
+              },
+              {
+                "id": "johnson",
+                "name": {
+                  "value": "Johnson",
+                  "synonyms": ["Johnson"]
+                }
+              },
+              {
+                "id": "brown",
+                "name": {
+                  "value": "Brown",
+                  "synonyms": ["Brown"]
+                }
+              },
+              {
+                "id": "wilson",
+                "name": {
+                  "value": "Wilson",
+                  "synonyms": ["Wilson"]
+                }
+              }
+            ]
+          },
+          {
+            "name": "passport_number",
+            "values": [
+              {
+                "id": "passport_number",
+                "name": {
+                  "value": "passport number",
+                  "synonyms": ["passport number", "passport ID", "passport"]
+                }
+              },
+              {
+                "id": "passport_id",
+                "name": {
+                  "value": "passport_id",
+                  "synonyms": ["ID number", "ID", "passport"]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "dialog": {
+      "intents": []
+    },
+    "prompts": [],
+    "streams": []
+  }
+  
